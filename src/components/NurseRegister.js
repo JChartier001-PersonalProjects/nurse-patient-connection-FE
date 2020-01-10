@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from "axios";
+import axiosWithAuth from '../api/axiosWithAuth';
 
 const NurseRegister = () => {
     const id = localStorage.getItem('userId');
@@ -28,7 +29,7 @@ const NurseRegister = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios
+        axiosWithAuth()
         .post('http://localhost:4000/api/nurse', nurse)
         .then(response => {
             console.log(response);            

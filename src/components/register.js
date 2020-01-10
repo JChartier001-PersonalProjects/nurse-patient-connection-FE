@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import axios from "axios";
 
-const Register = () => {
+
+
+const Register = (props) => {
     const [user, setUser] = useState({
         first_name: "",
         last_name: "",
@@ -9,30 +11,27 @@ const Register = () => {
         password: ""
     });
 
-    const [role, setRole] = useState({
-
-    })
-
     const handleInput = e => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
     }
-
+   
     const handleSelect = e => {
-        setRole({
-            [e.target.name]: e.target.value
-        })
-        
+        localStorage.setItem("role", e.target.value);
     }
-    console.log(role)
+    
     const handleSubmit = e => {
-        e.preventDefault();
+        const role = localStorage.getItem('role')
+        e.preventDefault();        
+        
         axios
         .post('http://localhost:4000/api/auth/register', user)
-        .then(response => {
-            console.log(response)
+        .then(response => {   
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem('userId', response.data.id)
+            props.history.push(`/${role}`);            
         })
         .catch(error => {
             console.dir(error)
@@ -53,17 +52,13 @@ const Register = () => {
                         <option value="select">Please Select One</option>
                         <option value="nurse">I am a Nurse</option>
                         <option value="patient">I am a Parent/Patient</option>
-                    </select>
-
-
+                    </select>  
                     <button type="submit">Register</button>
-
-
                 </div>
             </form>
         </div>
     )
-
 }
+
 export default Register;
 

@@ -6,7 +6,7 @@ import Login from "./components/Login.js";
 import Dashboard from "./components/Dashboard.js";
 import NurseRegister from "./components/NurseRegister.js";
 import PatientRegister from "./components/PatientRegister.js";
-import './App.css';
+import './scss/App.scss';
 
 function App() {
   return (

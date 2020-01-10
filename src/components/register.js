@@ -9,6 +9,10 @@ const Register = () => {
         password: ""
     });
 
+    const [role, setRole] = useState({
+
+    })
+
     const handleInput = e => {
         setUser({
             ...user,
@@ -16,6 +20,13 @@ const Register = () => {
         })
     }
 
+    const handleSelect = e => {
+        setRole({
+            [e.target.name]: e.target.value
+        })
+        
+    }
+    console.log(role)
     const handleSubmit = e => {
         e.preventDefault();
         axios
@@ -27,6 +38,7 @@ const Register = () => {
             console.dir(error)
         })
     }
+    
 
     return(
         <div className="registerContainer">
@@ -37,6 +49,13 @@ const Register = () => {
                     <label>Last Name: <input type="text" name="last_name" placeholder="Last Name" onInput={handleInput}/></label>
                     <label>Email: <input type="text" name="email" placeholder="Email" onInput={handleInput}/></label>
                     <label>Password: <input type="password" name="password" placeholder="Password" onInput={handleInput}/></label>
+                    <select name="role" onChange={handleSelect}>
+                        <option value="select">Please Select One</option>
+                        <option value="nurse">I am a Nurse</option>
+                        <option value="patient">I am a Parent/Patient</option>
+                    </select>
+
+
                     <button type="submit">Register</button>
 
 

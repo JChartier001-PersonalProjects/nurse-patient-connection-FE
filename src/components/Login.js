@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
 
-const Login = () => {
+const Login = props => {
     const [user, setUser] = useState({       
         email: "",
         password: ""
@@ -22,8 +22,10 @@ const Login = () => {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem('userId', response.data.id)
             console.log(response);
-
-        })
+           if(localStorage.getItem('token')) {
+               props.history.push('/dashboard')
+           }
+            })
         .catch(error => {
             console.dir(error)
         })
@@ -37,8 +39,6 @@ const Login = () => {
                     <label>Email: <input type="text" name="email" placeholder="Email" onInput={handleInput}/></label>
                     <label>Password: <input type="password" name="password" placeholder="Password" onInput={handleInput}/></label>
                     <button type="submit">Login</button>
-
-
                 </div>
             </form>
         </div>

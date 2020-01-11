@@ -1,0 +1,55 @@
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px gray;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.App .registerContainer {
+  margin-top: 200px;
+  width: 550px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px gray;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.App .registerContainer h1 {
+  text-align: center;
+}
+.App .registerContainer .registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App .registerContainer .registerForm .form-group,
+.App .registerContainer .registerForm .form-control,
+.App .registerContainer .registerForm .form-label {
+  margin: 5px 10px;
+}
+.App .registerContainer .registerForm .btn {
+  margin: 10px;
+  width: 20%;
+}
+.nurseRegister {
+  margin-top: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px gray;
+  padding: 2%;
+  background-color: #F5F5F5;
+}

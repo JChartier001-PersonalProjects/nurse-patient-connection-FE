@@ -42,7 +42,7 @@
   margin: 10px;
   width: 20%;
 }
-.nurseRegister {
+.App .nurseRegister {
   margin-top: 200px;
   display: flex;
   flex-flow: column nowrap;
@@ -52,4 +52,33 @@
   box-shadow: 2px 2px 5px 5px gray;
   padding: 2%;
   background-color: #F5F5F5;
+}
+.App .nurseRegister .form-group,
+.App .nurseRegister .form-control,
+.App .nurseRegister .form-label {
+  margin: 5px 10px;
+}
+.App .nurseRegister .btn {
+  margin: 10px;
+  width: 20%;
+}
+.App .patientRegister {
+  margin-top: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px gray;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.App .patientRegister .form-group,
+.App .patientRegister .form-control,
+.App .patientRegister .form-label {
+  margin: 5px 10px;
+}
+.App .patientRegister .btn {
+  margin: 10px;
+  width: 20%;
 }

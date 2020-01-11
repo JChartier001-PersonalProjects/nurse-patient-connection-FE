@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import {Button, Form, Row, Dropdown } from 'react-bootstrap';
-
-
-
+import {Button, Form, Row} from 'react-bootstrap';
 
 const Register = (props) => {
     const [user, setUser] = useState({
@@ -26,8 +23,7 @@ const Register = (props) => {
     
     const handleSubmit = e => {
         const role = localStorage.getItem('role')
-        e.preventDefault();        
-        
+        e.preventDefault();       
         axios
         .post('http://localhost:4000/api/auth/register', user)
         .then(response => {   

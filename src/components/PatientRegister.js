@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import axiosWithAuth from "../api/axiosWithAuth.js"
+import axiosWithAuth from "../api/axiosWithAuth.js";
+import {Button, Form, Row, Col} from 'react-bootstrap';
 
 const PatientRegister = (props) => {
     const id = localStorage.getItem('userId');
@@ -73,72 +74,68 @@ const PatientRegister = (props) => {
 
     return(
         <div className="patientRegister">
-            
-                <label htmlFor="city">City</label>
-                <input type='text' name="city" placeholder="City" onChange={handleInputPatient}/>
-
-                <label htmlFor="state">If you reside outside of WI, please enter state</label>
-                <input type='text' name="state" placeholder="State" onChange={handleInputPatient}/>
-
-                <label htmlFor="insurance">Insurance Type</label>
-                <select className='user-select'	name='insurance' onChange={handleInputPatient} defaultValue=''>                    
+            <Form onSubmit={handleSubmit}>
+                <Row >                    
+                    <Col xs={6} md={4}>
+                        <Form.Label>City</Form.Label>
+                        <Form.Control className="input" type="text" name="city" placeholder="City" onChange={handleInputPatient}/>
+                        </Col>  
+                        <Col xs={6} md={4}>
+                        <Form.Label>State</Form.Label>
+                        <Form.Control className="input" type="text" name="state" placeholder="State" onChange={handleInputPatient}/>
+                    </Col>                    
+                </Row>
+                <Row>
+                    <Col xs={6} >
+                <Form.Label >Insurance Type</Form.Label>
+                <Form.Control as="select" name='insurance' onChange={handleInputPatient} defaultValue=''>                
                     <option value='' disabled hidden>Please Select</option>
                     <option value="ForwardHealth">ForwardHealth</option>
                     <option value="Private Insurance">Private Insurance</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <label htmlFor="case_manager">Are you currently looking for a case Manager? </label>
-                <select className='user-select'	name='case_manager' onChange={handleInputPatient} defaultValue=''>
+                    <option value="Other">Other</option>     
+                </Form.Control> 
+                </Col>
+                <Col xs={6}>
+                <Form.Label >In need of a Case Manager?</Form.Label>
+                <Form.Control as="select"  name='case_manager' onChange={handleInputPatient} defaultValue=''>                
                     <option value='' disabled hidden>Please Select</option>
                     <option value={true}>Yes</option>
-                    <option value={false}>No</option>
-                </select>
-
-                <label htmlFor="trach">Does your child/self have a trach?
-                    <input type="checkbox" name='trach' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="gt">Does your child/self have a g-tube?
-                    <input type="checkbox" name='gt' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="vent">Does your child/self have a vent?
-                    <input type="checkbox" name='vent' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="school">Does your child/self attend school?
-                    <input type="checkbox" name='school' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="school_time">If yes, what times does your child attend school?
-                    <input type="text" name="school_time" onChange={handleInputNeeds}/></label>
-                <label htmlFor="verbal">Is your child/self verbal?
-                    <input type="checkbox" name='verbal' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="mobility">What is your child/self's mobility needs
-                    <input type="text" name="mobility" onInput={handleInputNeeds}/>
-                </label>
-                <label htmlFor="appt">Will nurse be going with your child/self to appointments?
-                    <input type="checkbox" name='appt' value="true" onChange={handleInputNeeds}/></label>
-                <label htmlFor="user_car">If yes, will the nurse need to use own car?
-                    <input type="checkbox" name='use_car' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="develop_disabled">Is your child/self developmentally disabled?
-                    <input type="checkbox" name='develop_disabled' value="true" onChange={handleInputNeeds}/>
-                </label>
-                <label htmlFor="live_with">Who does your child/self life with?  
-                    Self: 
-                        <input type="checkbox" name='live_with' value="self" onChange={handleInputNeeds}/>
-                    Parents:
-                        <input type="checkbox" name='live_with' value="parent" onChange={handleInputNeeds}/>  
-                    Others: 
-                        <input type="checkbox" name='live_with' value="other" onChange={handleInputNeeds}/>
-                </label>
-
-
+                    <option value={false}>No</option>    
+                </Form.Control> 
+                </Col>
+                </Row>
                 
-                <label htmlFor="animals">Are there animals in the home?<input type="checkbox" name='animals' value="true" onChange={handleInputNeeds}/></label>
-
+                    <Form.Label>Please check the needs of your child/self:</Form.Label>
+                    <Form.Check type="checkbox" label="Trach" name='trach' value="true" onChange={handleInputNeeds}/>
+                    <Form.Check type="checkbox" label="Vent" name='vent' value="true" onChange={handleInputNeeds}/>
+                    <Form.Check type="checkbox" label="G-tube" name='gt' value="true" onChange={handleInputNeeds}/>                    
+                    <Form.Check type="checkbox" label="Developmentally Delayed" name='develop_disabled' value="true" onChange={handleInputNeeds}/>
+                    <Form.Check type="checkbox" label="Verbal" name='verbal' value="true" onChange={handleInputNeeds}/>
+                    <Form.Check type="checkbox" label="Non-verbal" name='verbal' value="false" onChange={handleInputNeeds}/>
+                    <Form.Check type="checkbox" label="Attends School" name='school' value="true" onChange={handleInputNeeds}/>
+                    <Row>
+                    <Form.Label >If yes, what times does your child attend school?
+                        <Form.Control className="input" type="text" name="school_time" onChange={handleInputNeeds}/>
+                        </Form.Label>
+                    </Row>
+                    <Form.Label >What are your child/self's mobility needs
+                    <Form.Control className="input" type="text" name="mobility" onInput={handleInputNeeds}/>
+                </Form.Label>
+                <Form.Check type="checkbox" label="Nurse to attend appointments?" name='appt' value="true" onChange={handleInputNeeds}/>
+                <Form.Check type="checkbox" label="If yes, will nurse need to use own car?" name='use_car' value="true" onChange={handleInputNeeds}/>
                 
-                <button onClick={handleSubmit}>Submit</button>
-            
+                <Form.Label >Who does your child/self life with? </Form.Label>
+                <Row>
+                    <Col xs={6} md={4}>
+                        <Form.Check type="checkbox" label="Self" name='live_with' value="self" onChange={handleInputNeeds}/>
+                        <Form.Check type="checkbox" label="Parents" name='live_with' value="parent" onChange={handleInputNeeds}/>
+                        <Form.Check type="checkbox" label="Others"name='live_with' value="other" onChange={handleInputNeeds}/>
+                    </Col>
+                </Row>
+               <Form.Check type="checkbox" label="Animals in the home?" name='animals' value="true" onChange={handleInputNeeds}/>
+                
+                <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
+                </Form>
         </div>
     )
 }

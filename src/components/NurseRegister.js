@@ -3,7 +3,7 @@ import axios from "axios";
 import axiosWithAuth from '../api/axiosWithAuth';
 import {Form, Button} from "react-bootstrap";
 
-const NurseRegister = () => {
+const NurseRegister = (props) => {
     const id = localStorage.getItem('userId');
     const [ nurse, setNurse] = useState({
         user_id: id,
@@ -33,7 +33,8 @@ const NurseRegister = () => {
         axiosWithAuth()
         .post('http://localhost:4000/api/nurse', nurse)
         .then(response => {
-            console.log(response);            
+            console.log(response);
+            props.history.push('dashboard');            
         })
     }
     console.log(nurse)

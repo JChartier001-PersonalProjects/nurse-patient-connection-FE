@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 5px gray;
@@ -11,7 +12,6 @@
 .App {
   display: flex;
   justify-content: center;
-  align-content: center;
 }
 .App .registerContainer {
   margin-top: 200px;
@@ -19,6 +19,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 5px gray;
@@ -43,30 +44,28 @@
   width: 20%;
 }
 .App .nurseRegister {
-  margin-top: 200px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+  width: 90%;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 5px gray;
-  padding: 2%;
-  background-color: #F5F5F5;
+  padding: 2% 2% 0 2%;
 }
-.App .nurseRegister .form-group,
-.App .nurseRegister .form-control,
-.App .nurseRegister .form-label {
-  margin: 5px 10px;
+.App .nurseRegister .form-check {
+  margin: 10px 0;
+}
+.App .nurseRegister h2 {
+  text-align: center;
+  margin-bottom: 2%;
 }
 .App .nurseRegister .btn {
-  margin: 10px;
-  width: 20%;
+  margin: 1% 40%;
 }
 .App .patientRegister {
   margin-top: 200px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 5px gray;
@@ -81,4 +80,22 @@
 .App .patientRegister .btn {
   margin: 10px;
   width: 20%;
+}
+.App .loginContainer {
+  margin-top: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px gray;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.App .loginContainer h1 {
+  text-align: center;
+}
+.App .loginContainer .form-label {
+  margin-left: 3%;
 }

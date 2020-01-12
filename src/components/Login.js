@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {Form, Button} from "react-bootstrap";
 
 const Login = props => {
     const [user, setUser] = useState({       
@@ -32,15 +33,15 @@ const Login = props => {
     }
 
     return(
-        <div className="LoginContainer">
-            <form onSubmit={handleSubmit}>
+        <div className="loginContainer">
+            <Form onSubmit={handleSubmit}>
                 <h1>Please Login</h1>
                 <div className="LoginForm">                    
-                    <label>Email: <input type="text" name="email" placeholder="Email" onInput={handleInput}/></label>
-                    <label>Password: <input type="password" name="password" placeholder="Password" onInput={handleInput}/></label>
-                    <button type="submit">Login</button>
+                    <Form.Label>Email: <Form.Control type="text" name="email" placeholder="Email" onInput={handleInput}/></Form.Label>
+                    <Form.Label>Password: <Form.Control type="password" name="password" placeholder="Password" onInput={handleInput}/></Form.Label>
+                    <Button type="submit"  variant="outline-info">Login</Button>
                 </div>
-            </form>
+            </Form>
         </div>
     )
 

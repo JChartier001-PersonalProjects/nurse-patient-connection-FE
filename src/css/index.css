@@ -99,3 +99,10 @@
 .App .loginContainer .form-label {
   margin-left: 3%;
 }
+.App .patientDash .need p {
+  margin: 1px;
+}
+.App .patientDash .card-header {
+  display: flex;
+  justify-content: space-between;
+}

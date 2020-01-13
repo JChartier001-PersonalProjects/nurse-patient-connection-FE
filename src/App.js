@@ -4,8 +4,8 @@ import {Route} from "react-router-dom";
 import Register from "./components/register.js";
 import Login from "./components/Login.js";
 import Dashboard from "./components/Dashboard.js";
-import NurseRegister from "./components/NurseRegister.js";
-import PatientRegister from "./components/PatientRegister.js";
+import NurseRegister from "./components/Nurse/NurseRegister.js";
+import PatientRegister from "./components/Patient/PatientRegister.js";
 import './css/index.css';
 
 function App() {

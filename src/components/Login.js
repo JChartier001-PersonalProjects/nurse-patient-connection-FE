@@ -21,7 +21,8 @@ const Login = props => {
         .post('http://localhost:4000/api/auth/login', user)
         .then(response => {
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem('userId', response.data.id)
+            localStorage.setItem('userId', response.data.id);
+            localStorage.setItem('role', response.data.role);
             console.log(response);
            if(localStorage.getItem('token')) {
                props.history.push('/dashboard')

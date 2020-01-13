@@ -1,41 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from "../api/axiosWithAuth.js";
 import {Card} from "react-bootstrap";
+import PatientDashboard from "../components/Patient/patientDashboard.js";
 
 
 const Dashboard = () => {
     const[user, setUser] = useState({});
-    const [needs,setNeeds]= useState({});
+    const [patient,setPatient]= useState({});
     const [nurse, setNurse]= useState({})
    
-    useEffect(() => {    
-        const id = localStorage.getItem('userId');
-        const role = localStorage.getItem('role')
-        
-        axiosWithAuth()
-        .get(`api/${role}/${id}`)
-        .then(response => {
-            setUser(response.data)
-        axiosWithAuth()
-        .get(`api/patient/${id}/needs`)
-        .then(response => {           
-            setNeeds(response.data);
-        })
-        axiosWithAuth()
-        .get(`api/nurse/${id}/`)
-        .then(response => {           
-            setNurse(response.data);
-        })
-        })
-        .catch(error => {
-            console.dir(error)
-        })    
-    }, []);
-    
+    // useEffect(() => {    
+    //     const id = localStorage.getItem('userId');
+    //     const role = localStorage.getItem('role')
+       
+    //     axiosWithAuth()
+    //     .get(`api/nurse/${id}/`)
+    //     .then(response => {           
+    //         setNurse(response.data);
+    //     })
+    //     })
+    //     .catch(error => {
+    //         console.dir(error)
+    //     })    
+    // }, []);
+    console.log("patient", patient, user)
 
     return(
         <div className="dashboardContainer">
-            {user && user.length > 0 ? user.map(user => {
+            <PatientDashboard/>
+            {/* {user && user.length > 0 ? user.map(user => {
                 return(
                     <div key={user.id}>
                         <h3>Welcome {user.first_name}</h3>
@@ -45,14 +38,16 @@ const Dashboard = () => {
                                 <Card.Body>                      
                                     <p>{`${user.first_name}  ${user.last_name}`}</p>
                                     <p>Email: {user.email}</p>
-                                    {needs && needs.length > 0 ? needs.map(needs => {
+                                    {patient && patient.length > 0 ? patient.map(needs => {
                                         return ( 
-                                            <Card.Text>
+                                            
                                                 <div className="needsInfo" key={needs.id}>
-                                                    <p>City, State: {user.city}, {user.state}</p>
-                                                    <p>Insurance type: {user.insurance}</p>
+                                                    <Card.Text>
+                                                    City, State: {user.city}, {user.state}<br/>
+                                                    Insurance type: {user.primary_insurance}
+                                                    </Card.Text>
                                                 </div>
-                                            </Card.Text>
+                                            
                                         )}): null}
                                     {nurse && nurse.length > 0 ? nurse.map(nurse => {
                                         return(
@@ -70,7 +65,7 @@ const Dashboard = () => {
                             </Card>
                         </div>
                     </div>  
-                )}): null}
+                )}): null} */}
         </div>
     ) 
 }

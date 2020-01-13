@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axiosWithAuth from "../api/axiosWithAuth.js";
+import axiosWithAuth from "../../api/axiosWithAuth.js";
 import {Button, Form, Row, Col} from 'react-bootstrap';
 
 const PatientRegister = (props) => {
@@ -44,7 +44,7 @@ const PatientRegister = (props) => {
          }}        
         setPatient({
             ...patient,
-            [e.tartget.name]: e.target.value
+            [e.tartget.name]: stringToBoolean(e.target.value)
         })
     };
 

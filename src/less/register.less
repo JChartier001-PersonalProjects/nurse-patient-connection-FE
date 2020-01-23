@@ -23,10 +23,11 @@
     }
    }
    .nurseRegister{
+       margin-top: 5%;
         width: 90%;
         border: 1px solid black;
         border-radius: 10px;
-        box-shadow: 2px 2px 5px 5px gray;
+        box-shadow: 2px 2px 5px 5px plum;
         padding: 2% 2% 0 2%;   
         .form-check{
             margin: 10px 0;
@@ -35,6 +36,7 @@
             text-align: center;
             margin-bottom: 2%;
         }
+       
         
         
         .btn{
@@ -64,15 +66,99 @@
         margin-left: 3%;
     }
 }
-.patientDash{
+.patientDash, .nurseDash{
+    .profile p{
+        margin: 1px;
+    }
     .need p{
         margin: 1px;
     }
     .card-header{
         display: flex;
         justify-content: space-between;
+        background-color: #DCDCDC;
+        font-weight: bold;
+        font-size: 1.5rem;
     }
 }
 
+input, select{
+    border: 1px solid lightslategray;
+}
+.addAvail{
+    margin: 1% 0;
+     width: 50%;
+     border: 1px solid black;
+     border-radius: 10px;
+     box-shadow: 2px 2px 5px 5px lightsteelblue;
+     padding: 2% 2% 2% 2%;   
+     .form-check{
+         margin: 10px 0;
+     } 
+     h2, p{
+         text-align: center;
+         margin-bottom: 2%;
+     }
+     .days{
+         text-align: left;
+     }
+     
+     .btn{
+         margin: 1% 40%;
+     }
 
+     .form-group{
+        display: flex;
+        
+        .right{
+            width: 50%;
+            margin: 0 2%;
+        }
+        .left{
+            width: 50%;        
+            margin: 0 2%;
+        }
+    }
+    .days_avail, .shifts_avail{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+.container{
+    padding: 0;
+    margin: 0;
+    
+}
+.availPost{
+.card-body{
+    padding: 0;
+    .container{
+        width: 100%;
+        padding:0;
+    }
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    background-color:  #DCDCDC;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+}
+
+.postDiv{
+    .card-body{
+        padding: 2%;
+        .card-text{
+            padding: 0;
+            margin: 0;
+        }
+    }
+    .card-header{
+    background-color: #f2f2f2;
+    }
+}
+
+  
 }

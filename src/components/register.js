@@ -9,7 +9,8 @@ const Register = (props) => {
         email: "",
         password: "",
         city: '',
-        state: ''
+        state: '',
+        role: ""
     });
 
     const handleInput = e => {
@@ -29,8 +30,7 @@ const Register = (props) => {
         axios
         .post('http://localhost:4000/api/auth/register', user)
         .then(response => {   
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem('userId', response.data.id)
+            localStorage.setItem("token", response.data.token);            
             props.history.push(`/${role}`);            
         })
         .catch(error => {
@@ -74,7 +74,7 @@ const Register = (props) => {
                         </Col>
                     </Row>
                     <Col xs={6}>
-                    <Form.Control as="select" name="role" onChange={handleSelect}>
+                    <Form.Control as="select" name="role" onChange={handleSelect, handleInput}>
                         <option value="select">Please Select One</option>
                         <option value="nurse">I am a Nurse</option>
                         <option value="patient">I am a Parent/Patient</option>      

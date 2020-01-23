@@ -5,7 +5,7 @@
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px gray;
+  box-shadow: 2px 2px 5px 5px plum;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -22,7 +22,7 @@
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px gray;
+  box-shadow: 2px 2px 5px 5px plum;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -44,10 +44,11 @@
   width: 20%;
 }
 .App .nurseRegister {
+  margin-top: 5%;
   width: 90%;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px gray;
+  box-shadow: 2px 2px 5px 5px plum;
   padding: 2% 2% 0 2%;
 }
 .App .nurseRegister .form-check {
@@ -68,7 +69,7 @@
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px gray;
+  box-shadow: 2px 2px 5px 5px plum;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -89,7 +90,7 @@
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px gray;
+  box-shadow: 2px 2px 5px 5px plum;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -99,10 +100,90 @@
 .App .loginContainer .form-label {
   margin-left: 3%;
 }
-.App .patientDash .need p {
+.App .patientDash .profile p,
+.App .nurseDash .profile p {
   margin: 1px;
 }
-.App .patientDash .card-header {
+.App .patientDash .need p,
+.App .nurseDash .need p {
+  margin: 1px;
+}
+.App .patientDash .card-header,
+.App .nurseDash .card-header {
   display: flex;
   justify-content: space-between;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.App input,
+.App select {
+  border: 1px solid lightslategray;
+}
+.App .addAvail {
+  margin: 1% 0;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px lightsteelblue;
+  padding: 2% 2% 2% 2%;
+}
+.App .addAvail .form-check {
+  margin: 10px 0;
+}
+.App .addAvail h2,
+.App .addAvail p {
+  text-align: center;
+  margin-bottom: 2%;
+}
+.App .addAvail .days {
+  text-align: left;
+}
+.App .addAvail .btn {
+  margin: 1% 40%;
+}
+.App .addAvail .form-group {
+  display: flex;
+}
+.App .addAvail .form-group .right {
+  width: 50%;
+  margin: 0 2%;
+}
+.App .addAvail .form-group .left {
+  width: 50%;
+  margin: 0 2%;
+}
+.App .addAvail .days_avail,
+.App .addAvail .shifts_avail {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.App .container {
+  padding: 0;
+  margin: 0;
+}
+.App .availPost .card-body {
+  padding: 0;
+}
+.App .availPost .card-body .container {
+  width: 100%;
+  padding: 0;
+}
+.App .availPost .card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.App .postDiv .card-body {
+  padding: 2%;
+}
+.App .postDiv .card-body .card-text {
+  padding: 0;
+  margin: 0;
+}
+.App .postDiv .card-header {
+  background-color: #f2f2f2;
 }

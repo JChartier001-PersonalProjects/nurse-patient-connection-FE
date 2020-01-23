@@ -20,11 +20,14 @@ const Login = props => {
         axios
         .post('http://localhost:4000/api/auth/login', user)
         .then(response => {
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem('userId', response.data.id);
-            localStorage.setItem('role', response.data.role);
-            console.log(response);
-           if(localStorage.getItem('token')) {
+            localStorage.setItem('token', response.data.token)
+            const token = localStorage.getItem('token')
+            const parse = JSON.parse(atob(token.split('.')[1])) 
+            localStorage.setItem('role', parse.role);
+            // localStorage.setItem('')               
+            console.log(parse);
+            console.log(response)
+           if(token) {
                props.history.push('/dashboard')
            }
             })
@@ -32,7 +35,7 @@ const Login = props => {
             console.dir(error)
         })
     }
-
+    console.log(user)
     return(
         <div className="loginContainer">
             <Form onSubmit={handleSubmit}>

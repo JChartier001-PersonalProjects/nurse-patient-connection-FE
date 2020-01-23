@@ -4,13 +4,6 @@ import {Card, Button} from "react-bootstrap";
 
 const PatientDashboard = () => {
     const [patient, setPatient] = useState({});
-    // const [needs, setNeeds] = useState({
-    //     Trach: patient.trach,
-
-
-
-    // })
-    // console.log(needs)
     
     useEffect(() => {
         const id = localStorage.getItem('userId');

@@ -3,13 +3,16 @@ import axiosWithAuth from '../../api/axiosWithAuth';
 import {Form, Button, Row, Col} from "react-bootstrap";
 
 const NurseRegister = (props) => {
-    const id = localStorage.getItem('userId');
-    const [ nurse, setNurse] = useState({
-        user_id: id,
+    const token = localStorage.getItem('token')
+    const parse = JSON.parse(atob(token.split('.')[1]))
+    const id = parse.id
+    const [ nurse, setNurse] = useState(
+       { user_id: id,
         license_type: '',
         rsc_child: false,
         rsc_adult: false
     });
+    
 
     const handleInput = e => {
         const stringToBoolean = string => {
@@ -73,7 +76,6 @@ const NurseRegister = (props) => {
                             </Form.Control>  
                         </Col>   
                     </Row>
-                    
                     <Button type="submit" variant="outline-info">Submit</Button>
                 </Form.Group>
             </Form>

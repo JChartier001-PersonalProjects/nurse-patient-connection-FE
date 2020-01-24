@@ -1,39 +1,49 @@
 import React, {useState} from 'react';
 import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import axios from "axios";
 
-const Add_Avail = () => {
+
+const Add_Avail = (props) => {
     const id = localStorage.getItem('nurse_id')
-    const [posting, setPosting] = useState({
-        
-    })
-       
+    const [posting, setPosting] = useState({});       
     const [days, setDays] = useState([]);
-    const [shifts, setShifts] = useState([
-    //    shifts:{
-    //     nurse_id: id,
-    //     shift_id: null
-    // }
-    ]);
+    const [shifts, setShifts] = useState([]);
 
-    const handlePost = e =>{
+    const handlePost = e =>{{
+        const stringToBoolean = string => {
+            switch(string.toLowerCase().trim()) {
+               case 'true': return true;
+               case 'false': return false;
+               default: return e.target.value;
+         }}
         setPosting({
             ...posting,
             nurse_id: id,
-           [e.target.name]: e.target.value
+           [e.target.name]: stringToBoolean(e.target.value)
         })
-    }
+    }}
     const handleDays = e => {
+        const stringToBoolean = string => {
+            switch(string.toLowerCase().trim()) {
+               case 'true': return true;
+               case 'false': return false;
+               default: return e.target.value;
+         }}
         setDays([
             ...days,
-            {nurse_id: id, day_id: e.target.value}
+            {nurse_id: id, day_id: stringToBoolean(e.target.value)}
         ])
     }
     const handleShifts = e => {
+        const stringToBoolean = string => {
+            switch(string.toLowerCase().trim()) {
+               case 'true': return true;
+               case 'false': return false;
+               default: return e.target.value;
+         }}
        setShifts([
            ...shifts,
-           {nurse_id: id, shift_id: e.target.value}
+           {nurse_id: id, shift_id: stringToBoolean(e.target.value)}
        ])
     }
     
@@ -41,19 +51,19 @@ const Add_Avail = () => {
         const token = localStorage.getItem('token');
         console.log(token)
         e.preventDefault();
-        axios
-        .post(`http://localhost:4000/api/avail`, {
-            posting, days, shifts,
-            header: {Authorization: token}
-        })
+        axiosWithAuth()
+        .post(`http://localhost:4000/api/avail`, 
+            {posting, days, shifts}
+            
+        )
         .then(response => {
-            console.log(response)
+            (props.history.push('/dashboard'))
         })
         .catch(error => {
             console.log(error)
         })
     }
-    console.log("posting", posting, "days", days, "shifts", shifts)
+    
     return(        
         <div className="addAvail">
         <h2>Add Availability</h2>
@@ -68,6 +78,7 @@ const Add_Avail = () => {
                         <Form.Label>Type of Pet</Form.Label>
                         <Form.Control type="text" name='type_pet' onChange={handlePost}/>                  
                     </Col>
+                   
                     <Col xs={12}>
                         <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value="true" onChange={handlePost}/>
                     </Col>
@@ -119,9 +130,7 @@ const Add_Avail = () => {
                     </Col>
                 </div>
             </Form.Group>
-            <Col xs={4}>
                 <p className='days'>Days Available</p>
-            </Col>
             <Form.Group className='days_avail'>
                 <Form.Check type="checkbox" id='days' label="Sunday" name='day_id' value="1" onChange={handleDays}/>
                 <Form.Check type="checkbox" id='days' label="Monday" name='day_id' value="2" onChange={handleDays} />
@@ -131,9 +140,7 @@ const Add_Avail = () => {
                 <Form.Check type="checkbox" id='days' label="Friday" name='day_id' value="6" onChange={handleDays} />
                 <Form.Check type="checkbox" id='days' label="Saturday" name='day_id' value="7" onChange={handleDays} />
             </Form.Group>
-            <Col xs={4}>
                 <p className='days'>Shifts Available</p>
-            </Col>
             <Form.Group className='shifts_avail'>
                 <Form.Check type="checkbox" label="8 hr AM" name='shift_id' value="1" onChange={handleShifts}/>
                 <Form.Check type="checkbox" label="8 hr PM" name='shift_id' value="2" onChange={handleShifts}/>

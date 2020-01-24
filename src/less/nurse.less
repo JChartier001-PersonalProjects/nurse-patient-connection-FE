@@ -21,26 +21,17 @@
          font-size: 1.2rem;
      }
 }
-.post{
-    margin-top: 5%;
-    .noPost{
-        .card-body{
-            padding: 5px;
-            a{
-                font-size: 1.5rem;
-            } 
-        }
-    }
-    .nurseDash {
-        display: flex;
-        justify-content: space-between;
-        width: 650px;
-        .profile p, .need p {
-            line-height: 1.0;
-            padding-bottom: 5px;
-        }        
-        .left{
-            margin-right: 10%;
+
+.nurseDash {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    .profile p {
+        line-height: 1.0;
+        padding-bottom: 5px;
+    }        
+    .left{
+        margin-right: 10%;
         .card{
             margin: 20% 0;       
             .card-header{
@@ -51,12 +42,25 @@
                 font-size: 1.5rem;
             }
         }
+    }
+    .post{
+        margin-top: 5%;
+        .noPost{
+            .card-body{
+                padding: 5px;
+                a{
+                    font-size: 1.5rem;
+                } 
+            }
         }
     .btn{
         margin-left: 10px;
     }
     .card-body{
-        padding: 0;   
+        padding: 5px 0;  
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
             
     }
     .card-header{
@@ -66,15 +70,36 @@
         font-weight: bold;
         font-size: 1.5rem;
     }
-    .postDiv{
-        .card-header{
-            background-color: #e4e3e3;
-            border-top: 1px solid lightgray;
-            }
-        .card-body{
+    .lightHeader{
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
-        padding: 5px;
+        background-color: #e4e3e3;
+        border-top: 1px solid lightgray;
+        font-size: 1.3rem;
+        
         }
+   
 }}
+.addAvail{
+    .form();
+    .form-group{    
+    display: flex;    
+    font-size: 1.4rem;
+    width: 100%;
+    .left, .right{
+        width: 48%;
+    }
+     .form-control, .form-label, .form-check-label, .form-check.input {
+        margin: 5px 10px;
+        font-size: 1.4rem;
+   }
+    .btn{
+        margin: 3% 35% 0;
+    }
+    .form-control{
+        margin-bottom: 2%;
+        font-size: 1.2rem;
+    }
+}
+}

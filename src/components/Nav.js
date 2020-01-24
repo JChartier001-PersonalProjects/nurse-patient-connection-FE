@@ -2,8 +2,9 @@ import React from 'react';
 import {Button} from "react-bootstrap";
 import {Redirect} from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
     const signedIn = localStorage.getItem('token');
+   
 
     const handleLogout = e => {
         e.preventDefault();        
@@ -11,7 +12,8 @@ const Nav = () => {
         localStorage.removeItem('nurse_id');
         localStorage.removeItem('role');
         // localStorage.removeItem('token');
-        {if(!signedIn) return  (<Redirect to="/login" />)}
+        props.history.push('/login')
+       
     }
         
     return (

@@ -3,7 +3,7 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-items: center;
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
   border-radius: 10px;
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
@@ -197,7 +197,7 @@ body {
   flex-flow: column nowrap;
   align-items: center;
   justify-items: center;
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
   border-radius: 10px;
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
@@ -232,7 +232,7 @@ body {
   flex-flow: column nowrap;
   align-items: center;
   justify-items: center;
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
   border-radius: 10px;
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
@@ -255,6 +255,7 @@ body {
 .App .loginContainer .loginForm label {
   margin: 2%;
   width: 100%;
+  font-size: 1.4rem;
 }
 .App .dash {
   display: flex;
@@ -264,41 +265,12 @@ body {
   text-align: center;
   font-size: 3rem;
 }
-.App .dash .patientDash,
-.App .dash .nurseDash {
-  display: flex;
-  justify-content: space-between;
-  width: 650px;
-}
-.App .dash .patientDash .profile p,
-.App .dash .nurseDash .profile p,
-.App .dash .patientDash .need p,
-.App .dash .nurseDash .need p {
-  line-height: 1;
-  padding-bottom: 5px;
-}
-.App .dash .patientDash .left,
-.App .dash .nurseDash .left {
-  margin-right: 10%;
-}
-.App .dash .patientDash .left .card,
-.App .dash .nurseDash .left .card {
-  margin: 20% 0;
-}
-.App .dash .patientDash .left .card .card-header,
-.App .dash .nurseDash .left .card .card-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #DCDCDC;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
 .nurseRegister {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-items: center;
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
   border-radius: 10px;
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
@@ -328,37 +300,98 @@ body {
   margin-bottom: 1%;
   font-size: 1.2rem;
 }
-.post {
-  margin-top: 5%;
+.nurseDash {
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
 }
-.post .noPost .card-body {
-  padding: 5px;
+.nurseDash .profile p {
+  line-height: 1;
+  padding-bottom: 5px;
 }
-.post .noPost .card-body a {
-  font-size: 1.5rem;
+.nurseDash .left {
+  margin-right: 10%;
 }
-.post .btn {
-  margin-left: 10px;
+.nurseDash .left .card {
+  margin: 20% 0;
 }
-.post .card-body {
-  padding: 0;
-}
-.post .card-header {
+.nurseDash .left .card .card-header {
   display: flex;
   justify-content: space-between;
   background-color: #DCDCDC;
   font-weight: bold;
   font-size: 1.5rem;
 }
-.post .postDiv .card-header {
-  background-color: #e4e3e3;
-  border-top: 1px solid lightgray;
+.nurseDash .post {
+  margin-top: 5%;
 }
-.post .postDiv .card-body {
+.nurseDash .post .noPost .card-body {
+  padding: 5px;
+}
+.nurseDash .post .noPost .card-body a {
+  font-size: 1.5rem;
+}
+.nurseDash .post .btn {
+  margin-left: 10px;
+}
+.nurseDash .post .card-body {
+  padding: 5px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
+}
+.nurseDash .post .card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.nurseDash .post .lightHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e4e3e3;
+  border-top: 1px solid lightgray;
+  font-size: 1.3rem;
+}
+.addAvail {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid #17a2b8;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.addAvail input,
+.addAvail select {
+  border: 1px solid lightslategray;
+}
+.addAvail .form-group {
+  display: flex;
+  font-size: 1.4rem;
+  width: 100%;
+}
+.addAvail .form-group .left,
+.addAvail .form-group .right {
+  width: 48%;
+}
+.addAvail .form-group .form-control,
+.addAvail .form-group .form-label,
+.addAvail .form-group .form-check-label,
+.addAvail .form-group .form-check.input {
+  margin: 5px 10px;
+  font-size: 1.4rem;
+}
+.addAvail .form-group .btn {
+  margin: 3% 35% 0;
+}
+.addAvail .form-group .form-control {
+  margin-bottom: 2%;
+  font-size: 1.2rem;
 }
 .patientRegister {
   width: 70%;
@@ -368,7 +401,7 @@ body {
   flex-flow: column nowrap;
   align-items: center;
   justify-items: center;
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
   border-radius: 10px;
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
@@ -399,4 +432,27 @@ body {
   margin: 10px;
   width: 20%;
   font-size: 1.4rem;
+}
+.patientRegister .patientDash {
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
+}
+.patientRegister .patientDash .profile p,
+.patientRegister .patientDash .need p {
+  line-height: 1;
+  padding-bottom: 5px;
+}
+.patientRegister .patientDash .left {
+  margin-right: 10%;
+}
+.patientRegister .patientDash .left .card {
+  margin: 20% 0;
+}
+.patientRegister .patientDash .left .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-size: 1.5rem;
 }

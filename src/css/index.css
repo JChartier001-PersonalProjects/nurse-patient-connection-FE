@@ -9,6 +9,183 @@
   padding: 2%;
   background-color: #F5F5F5;
 }
+.form input,
+.form select {
+  border: 1px solid lightslategray;
+}
+.box {
+  box-shadow: 2px 2px 5px 5px plum;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Quicksand', sans-serif;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+  padding-bottom: 10px;
+}
+h4 {
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+}
+p {
+  line-height: 1.5;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
 .App {
   display: flex;
   justify-content: center;
@@ -25,6 +202,10 @@
   box-shadow: 2px 2px 5px 5px plum;
   padding: 2%;
   background-color: #F5F5F5;
+}
+.App .registerContainer input,
+.App .registerContainer select {
+  border: 1px solid lightslategray;
 }
 .App .registerContainer h1 {
   text-align: center;
@@ -44,22 +225,36 @@
   width: 20%;
 }
 .App .nurseRegister {
-  margin-top: 5%;
-  width: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 5px plum;
-  padding: 2% 2% 0 2%;
+  padding: 2%;
+  background-color: #F5F5F5;
+  margin-top: 5%;
 }
-.App .nurseRegister .form-check {
-  margin: 10px 0;
+.App .nurseRegister input,
+.App .nurseRegister select {
+  border: 1px solid lightslategray;
+}
+.App .nurseRegister .row {
+  padding: 1%;
 }
 .App .nurseRegister h2 {
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
+}
+.App .nurseRegister .form-label {
+  margin: 2%;
 }
 .App .nurseRegister .btn {
-  margin: 1% 40%;
+  margin: 3% 35% 0;
+}
+.App .nurseRegister .form-control {
+  margin-bottom: 1%;
 }
 .App .patientRegister {
   margin-top: 200px;
@@ -73,6 +268,10 @@
   padding: 2%;
   background-color: #F5F5F5;
 }
+.App .patientRegister input,
+.App .patientRegister select {
+  border: 1px solid lightslategray;
+}
 .App .patientRegister .form-group,
 .App .patientRegister .form-control,
 .App .patientRegister .form-label {
@@ -84,6 +283,7 @@
 }
 .App .loginContainer {
   margin-top: 200px;
+  width: 60%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -94,96 +294,84 @@
   padding: 2%;
   background-color: #F5F5F5;
 }
-.App .loginContainer h1 {
-  text-align: center;
-}
-.App .loginContainer .form-label {
-  margin-left: 3%;
-}
-.App .patientDash .profile p,
-.App .nurseDash .profile p {
-  margin: 1px;
-}
-.App .patientDash .need p,
-.App .nurseDash .need p {
-  margin: 1px;
-}
-.App .patientDash .card-header,
-.App .nurseDash .card-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #DCDCDC;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.App input,
-.App select {
+.App .loginContainer input,
+.App .loginContainer select {
   border: 1px solid lightslategray;
 }
-.App .addAvail {
-  margin: 1% 0;
-  width: 50%;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px lightsteelblue;
-  padding: 2% 2% 2% 2%;
-}
-.App .addAvail .form-check {
-  margin: 10px 0;
-}
-.App .addAvail h2,
-.App .addAvail p {
+.App .loginContainer h1 {
   text-align: center;
-  margin-bottom: 2%;
+  font-size: 2rem;
 }
-.App .addAvail .days {
-  text-align: left;
-}
-.App .addAvail .btn {
-  margin: 1% 40%;
-}
-.App .addAvail .form-group {
-  display: flex;
-}
-.App .addAvail .form-group .right {
-  width: 50%;
-  margin: 0 2%;
-}
-.App .addAvail .form-group .left {
-  width: 50%;
-  margin: 0 2%;
-}
-.App .addAvail .days_avail,
-.App .addAvail .shifts_avail {
+.App .loginContainer .loginForm {
   display: flex;
   width: 100%;
+  justify-content: space-evenly;
+}
+.App .loginContainer .loginForm input,
+.App .loginContainer .loginForm label {
+  margin: 2%;
+  width: 100%;
+}
+.App .dash {
+  display: flex;
+  width: 800px;
+}
+.App .dash h3 {
+  text-align: center;
+  font-size: 3rem;
+}
+.App .dash .patientDash,
+.App .dash .nurseDash {
+  display: flex;
   justify-content: space-between;
+  width: 650px;
 }
-.App .container {
-  padding: 0;
-  margin: 0;
+.App .dash .patientDash .profile p,
+.App .dash .nurseDash .profile p,
+.App .dash .patientDash .need p,
+.App .dash .nurseDash .need p {
+  line-height: 1;
+  padding-bottom: 5px;
 }
-.App .availPost .card-body {
-  padding: 0;
+.App .dash .patientDash .left,
+.App .dash .nurseDash .left {
+  margin-right: 10%;
 }
-.App .availPost .card-body .container {
-  width: 100%;
-  padding: 0;
+.App .dash .patientDash .left .card,
+.App .dash .nurseDash .left .card {
+  margin: 20% 0;
 }
-.App .availPost .card-header {
+.App .dash .patientDash .left .card .card-header,
+.App .dash .nurseDash .left .card .card-header {
   display: flex;
   justify-content: space-between;
   background-color: #DCDCDC;
   font-weight: bold;
   font-size: 1.5rem;
 }
-.App .postDiv .card-body {
-  padding: 2%;
+.App .post {
+  margin-top: 5%;
 }
-.App .postDiv .card-body .card-text {
+.App .post .btn {
+  margin-left: 10px;
+}
+.App .post .card-body {
   padding: 0;
-  margin: 0;
 }
-.App .postDiv .card-header {
-  background-color: #f2f2f2;
+.App .post .card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.App .post .postDiv .card-header {
+  background-color: #e4e3e3;
+  border-top: 1px solid lightgray;
+}
+.App .post .postDiv .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
 }

@@ -26,14 +26,15 @@ const NurseDashboard = () => {
     }, [])
         
     return(
-        <div>
+        <div className="dashCont">
         {nurse && nurse.length > 0 ? 
         nurse.map(nurse => {
             return(
-                <div key={nurse.id}>
+                <div  key={nurse.id}>
                     <h3>Welcome {nurse.first_name}</h3>
                     <div className="nurseDash">
-                        <Card border="info" style={{ width: "18rem"}}>
+                        <div className="left">
+                        <Card border="info" style={{ width: "fit-content"}}>
                             <Card.Header>Profile  <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
                             <Card.Body className="profile">
                                 <Card.Text>{nurse.first_name} {nurse.last_name}</Card.Text>
@@ -41,9 +42,9 @@ const NurseDashboard = () => {
                                 <Card.Text>{nurse.city}, {nurse.state}</Card.Text>
                             </Card.Body>
                         </Card>
-                        <Card border="info" style={{ width: "18rem"}}>
+                        <Card border="info" style={{ width: "fit-content"}}>
                             <Card.Header>Nurse Profile <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
-                            <Card.Body>
+                            <Card.Body className='profile'>
                                 <Card.Text>License Type: {nurse.license_type}</Card.Text>
                                 <Card.Text>Ped Vent Cert: {nurse.rsc_child === 1 ? "Yes" : "No"}</Card.Text>
                                 <Card.Text>Adult Vent Cert: {nurse.rsc_adult === 1 ? "Yes" : "No"}</Card.Text>
@@ -51,7 +52,7 @@ const NurseDashboard = () => {
                         </Card>
                     </div>
                     <Avail_Posting/>
-                    <Link to={`/add-avail/${nurse.id}`}>Add New Post</Link>
+                    </div>
                 </div>
          )})
         : null

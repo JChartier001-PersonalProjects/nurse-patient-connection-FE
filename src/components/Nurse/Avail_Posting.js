@@ -21,14 +21,14 @@ const Avail_Posting = () => {
             console.log(error)
         })
     }, [])
-    console.log("posting", posting)
+    const nurse = localStorage.getItem('nurse_id')
     return(
-     <div>
+     <div className='post'>
         {posting && posting.length !== 0 ?
-            <Card className="availPost" border="info" style= {{ width: '18rem'}}>
-                <Card.Header>Current Postings</Card.Header>                   
+            <Card className="availPost" border="info" style= {{ width: 'fit-content'}}>
+                <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>                   
                 <Card.Body className="availPost">
-                    <CurrentPosting id={posting[0].nurse_id}/>
+                    <CurrentPosting id={nurse}/>
                 </Card.Body>
             </Card> :
             <Card border="info" style= {{ width: '18rem'}}>
@@ -36,6 +36,8 @@ const Avail_Posting = () => {
                 <Card.Body>
                     <Card.Text>
                         You have no current postings
+                        <Link to={`/add-avail/${nurse}`}>Add New Post</Link>
+
                     </Card.Text>
                 </Card.Body>
             </Card>  

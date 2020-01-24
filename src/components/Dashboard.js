@@ -14,13 +14,11 @@ const Dashboard = () => {
         const role = parse.role;
 
     return(
-        <div className="dashboardContainer">
+        <div className="dash">
             {role === "patient" ?
-            <PatientDashboard/> :
-            <div>
-            <NurseDashboard/>
-            
-            </div>}
+            <PatientDashboard/> :          
+            <NurseDashboard/>            
+            }
         </div>
     ) 
 }

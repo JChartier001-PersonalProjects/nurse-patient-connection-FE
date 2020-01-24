@@ -41,14 +41,13 @@ const NurseRegister = (props) => {
 
     return(
         <div className="nurseRegister">
-            <Form onSubmit={handleSubmit}>
                 <h2>Additional Nurse Info</h2>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Row className="license">
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Form.Label >License Type:</Form.Label>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={8}>
                             <Form.Control as="select" name='license_type' onChange={handleInput} defaultValue=''>
                                 <option value='' disabled hidden>Please Select</option>
                                 <option value="RN">RN</option>
@@ -78,7 +77,7 @@ const NurseRegister = (props) => {
                     </Row>
                     <Button type="submit" variant="outline-info">Submit</Button>
                 </Form.Group>
-            </Form>
+            
         </div>        
     )
 }

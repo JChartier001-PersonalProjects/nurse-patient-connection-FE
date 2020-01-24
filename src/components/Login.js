@@ -38,14 +38,12 @@ const Login = props => {
     console.log(user)
     return(
         <div className="loginContainer">
-            <Form onSubmit={handleSubmit}>
-                <h1>Please Login</h1>
-                <div className="LoginForm">                    
-                    <Form.Label>Email: <Form.Control type="text" name="email" placeholder="Email" onInput={handleInput}/></Form.Label>
-                    <Form.Label>Password: <Form.Control type="password" name="password" placeholder="Password" onInput={handleInput}/></Form.Label>
-                    <Button type="submit"  variant="outline-info">Login</Button>
-                </div>
-            </Form>
+            <h1>Please Login</h1>
+            <div className="loginForm">                    
+                <Form.Label>Email: <Form.Control type="text" name="email" placeholder="Email" onInput={handleInput}/></Form.Label>
+                <Form.Label>Password: <Form.Control type="password" name="password" placeholder="Password" onInput={handleInput}/></Form.Label>
+            </div>   
+            <Button onClick={handleSubmit} variant="outline-info">Login</Button>         
         </div>
     )
 

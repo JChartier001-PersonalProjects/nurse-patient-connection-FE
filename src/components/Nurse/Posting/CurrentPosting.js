@@ -7,7 +7,9 @@ import {Link} from "react-router-dom";
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
-    console.log(props)
+    const post = posting[0];    
+    const nurse = localStorage.getItem('nurse_id');
+    
     useEffect(() => {
         const id = localStorage.getItem('nurse_id');
         console.log(id)
@@ -21,16 +23,25 @@ const CurrentPosting = (props) => {
             console.log(error)
         })
     }, [props.id])
-    const post = posting[0]
-    console.log("length",posting)
-    const nurse = localStorage.getItem('nurse_id')
+
+        const handleDelete = e =>{
+            e.preventDefault();
+            const id = post.nurse_id
+            axiosWithAuth()
+            .delete(`/api/avail/${id}`)
+            .then(() => {
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
+   
     return (
         <div  className="post">
-            
-            
         {posting[0] && posting.length !==0 ? 
         <Card border="info" style={{ width: "fit-content"}}>
-             <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header> 
+             <Card.Header>Current Postings<Button variant="outline-info" onClick={handleDelete}>Delete</Button></Card.Header> 
             <Card.Header className="lightHeader">About Me<Link to="/edit-posting"><Button variant="outline-info">Edit</Button></Link></Card.Header>
             <Card.Body  className="profile">
                 <Card.Text>{!!post.case_manage  && "Case Manage"}</Card.Text>

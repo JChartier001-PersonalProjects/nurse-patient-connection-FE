@@ -331,6 +331,12 @@ body {
 .post {
   margin-top: 5%;
 }
+.post .noPost .card-body {
+  padding: 5px;
+}
+.post .noPost .card-body a {
+  font-size: 1.5rem;
+}
 .post .btn {
   margin-left: 10px;
 }

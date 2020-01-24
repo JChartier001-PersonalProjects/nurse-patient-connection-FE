@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
-
 import axiosWithAuth from "../../api/axiosWithAuth.js";
 import {Card, Button} from "react-bootstrap";
-
-import AvailPosting from "./Posting/Avail_Posting.js";
+import CurrentPosting from "./Posting/CurrentPosting.js"
 
 const NurseDashboard = () => {
     const [nurse, setNurse] = useState();
@@ -16,7 +14,6 @@ const NurseDashboard = () => {
         axiosWithAuth()
         .get(`api/nurse/${id}`)
         .then(response => {
-            console.log("getnurse", response.data[0])
             setNurse(response.data);
             localStorage.setItem("nurse_id", response.data[0].id)
         })
@@ -51,7 +48,7 @@ const NurseDashboard = () => {
                             </Card.Body>
                         </Card>
                     </div>
-                    <AvailPosting/>
+                    <CurrentPosting/>
                     </div>
                 </div>
          )})

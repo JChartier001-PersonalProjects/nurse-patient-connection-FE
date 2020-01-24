@@ -8,11 +8,13 @@ import NurseRegister from "./components/Nurse/NurseRegister.js";
 import PatientRegister from "./components/Patient/PatientRegister.js";
 import AddAvail from "./components/Nurse/Posting/Add_Avail.js";
 import CurrentPosting from "./components/Nurse/Posting/CurrentPosting.js";
+import Nav from "./components/Nav.js"
 import './css/index.css';
 
 function App() {
   return (
     <div className="App">
+      <Nav/>
       <Route exact path='/register' render={props => <Register {...props} />} />
       <Route exact path='/login' render={props => <Login {...props} />} />
       <Route exact path='/dashboard' render={props => <Dashboard {...props} />} />

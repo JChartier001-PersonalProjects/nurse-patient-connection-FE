@@ -9,7 +9,7 @@ const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
     console.log(props)
     useEffect(() => {
-        const id = props.id;
+        const id = localStorage.getItem('nurse_id');
         console.log(id)
         axiosWithAuth()
         .get(`/api/avail/${id}`)
@@ -22,11 +22,15 @@ const CurrentPosting = (props) => {
         })
     }, [props.id])
     const post = posting[0]
-
+    console.log("length",posting)
+    const nurse = localStorage.getItem('nurse_id')
     return (
-        <div >
-        {posting && posting.length !==0 ? 
-        <div className="postDiv">
+        <div  className="post">
+            
+            
+        {posting[0] && posting.length !==0 ? 
+        <Card border="info" style={{ width: "fit-content"}}>
+             <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header> 
             <Card.Header>About Me<Link to="/edit-posting"><Button variant="outline-info">Edit</Button></Link></Card.Header>
             <Card.Body  className="profile">
                 <Card.Text>{!!post.case_manage  && "Case Manage"}</Card.Text>
@@ -47,7 +51,15 @@ const CurrentPosting = (props) => {
                 <Card.Text key={shifts.id}>{!!posting.shifts  && `${shifts.shift}`}</Card.Text>
                 )}) : null}
             </Card.Body>
-         </div>: null
+            </Card>
+         :              
+         <Card className="noPost" border="info" style={{ width: "fit-content"}}>       
+              <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>              
+                <Card.Body>
+                    <Card.Text>You have no current postings</Card.Text>
+                    <Link to={`/add-avail/${nurse}`}>Add New Post</Link>
+                </Card.Body>
+             </Card>
             }
          </div>
     );

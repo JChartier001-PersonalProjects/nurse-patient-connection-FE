@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axiosWithAuth from "../../api/axiosWithAuth.js";
+import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import axios from "axios";
 
@@ -17,13 +17,13 @@ const Add_Avail = () => {
     // }
     ]);
 
-    const handlePost = e =>{{
+    const handlePost = e =>{
         setPosting({
             ...posting,
             nurse_id: id,
            [e.target.name]: e.target.value
         })
-    }}
+    }
     const handleDays = e => {
         setDays([
             ...days,

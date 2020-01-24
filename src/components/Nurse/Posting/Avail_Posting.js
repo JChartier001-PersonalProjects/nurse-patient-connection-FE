@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import axiosWithAuth from "../../api/axiosWithAuth.js";
+import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import {Card, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import CurrentPosting from "./CurrentPosting.js";
+import CurrentPosting from "../Posting/CurrentPosting.js";
 const Avail_Posting = () => {
     const [posting, setPosting] = useState();
 

@@ -20,9 +20,6 @@ const Register = (props) => {
         })
     }
    
-    const handleSelect = e => {
-        localStorage.setItem("role", e.target.value);
-    }
     
     const handleSubmit = e => {
         const role = localStorage.getItem('role')
@@ -74,7 +71,7 @@ const Register = (props) => {
                         </Col>
                     </Row>
                     <Col xs={6}>
-                    <Form.Control as="select" name="role" onChange={handleSelect, handleInput}>
+                    <Form.Control as="select" name="role" onChange={handleInput}>
                         <option value="select">Please Select One</option>
                         <option value="nurse">I am a Nurse</option>
                         <option value="patient">I am a Parent/Patient</option>      

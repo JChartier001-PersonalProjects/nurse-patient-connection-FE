@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
+
 import axiosWithAuth from "../../api/axiosWithAuth.js";
 import {Card, Button} from "react-bootstrap";
-import Add_Avail from "./Add_Avail.js";
-import Avail_Posting from "./Avail_Posting.js";
+
+import AvailPosting from "./Posting/Avail_Posting.js";
 
 const NurseDashboard = () => {
     const [nurse, setNurse] = useState();
@@ -51,7 +51,7 @@ const NurseDashboard = () => {
                             </Card.Body>
                         </Card>
                     </div>
-                    <Avail_Posting/>
+                    <AvailPosting/>
                     </div>
                 </div>
          )})

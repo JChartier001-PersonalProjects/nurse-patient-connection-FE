@@ -75,7 +75,7 @@ const NurseRegister = (props) => {
                             </Form.Control>  
                         </Col>   
                     </Row>
-                    <Button type="submit" variant="outline-info">Submit</Button>
+                    <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
                 </Form.Group>
             
         </div>        

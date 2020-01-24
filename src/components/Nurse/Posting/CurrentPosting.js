@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import axiosWithAuth from "../../api/axiosWithAuth.js";
+import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import {Card, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
@@ -20,7 +20,7 @@ const CurrentPosting = (props) => {
         .catch(error => {
             console.log(error)
         })
-    }, [])
+    }, [props.id])
     const post = posting[0]
 
     return (

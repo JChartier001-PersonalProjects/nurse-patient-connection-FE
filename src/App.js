@@ -6,8 +6,8 @@ import Login from "./components/Login.js";
 import Dashboard from "./components/Dashboard.js";
 import NurseRegister from "./components/Nurse/NurseRegister.js";
 import PatientRegister from "./components/Patient/PatientRegister.js";
-import AddAvail from "./components/Nurse/Add_Avail.js";
-import CurrentPosting from "./components/Nurse/CurrentPosting.js";
+import AddAvail from "./components/Nurse/Posting/Add_Avail.js";
+import CurrentPosting from "./components/Nurse/Posting/CurrentPosting.js";
 import './css/index.css';
 
 function App() {

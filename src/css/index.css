@@ -5,7 +5,7 @@
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px plum;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -14,7 +14,7 @@
   border: 1px solid lightslategray;
 }
 .box {
-  box-shadow: 2px 2px 5px 5px plum;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
 }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -199,7 +199,7 @@ body {
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px plum;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -219,65 +219,9 @@ body {
 .App .registerContainer .registerForm .form-control,
 .App .registerContainer .registerForm .form-label {
   margin: 5px 10px;
+  font-size: 1.4rem;
 }
 .App .registerContainer .registerForm .btn {
-  margin: 10px;
-  width: 20%;
-}
-.App .nurseRegister {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px plum;
-  padding: 2%;
-  background-color: #F5F5F5;
-  margin-top: 5%;
-}
-.App .nurseRegister input,
-.App .nurseRegister select {
-  border: 1px solid lightslategray;
-}
-.App .nurseRegister .row {
-  padding: 1%;
-}
-.App .nurseRegister h2 {
-  text-align: center;
-  margin-bottom: 10%;
-}
-.App .nurseRegister .form-label {
-  margin: 2%;
-}
-.App .nurseRegister .btn {
-  margin: 3% 35% 0;
-}
-.App .nurseRegister .form-control {
-  margin-bottom: 1%;
-}
-.App .patientRegister {
-  margin-top: 200px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px plum;
-  padding: 2%;
-  background-color: #F5F5F5;
-}
-.App .patientRegister input,
-.App .patientRegister select {
-  border: 1px solid lightslategray;
-}
-.App .patientRegister .form-group,
-.App .patientRegister .form-control,
-.App .patientRegister .form-label {
-  margin: 5px 10px;
-}
-.App .patientRegister .btn {
   margin: 10px;
   width: 20%;
 }
@@ -290,7 +234,7 @@ body {
   justify-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 5px plum;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
   background-color: #F5F5F5;
 }
@@ -349,29 +293,104 @@ body {
   font-weight: bold;
   font-size: 1.5rem;
 }
-.App .post {
+.nurseRegister {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
+  padding: 2%;
+  background-color: #F5F5F5;
   margin-top: 5%;
 }
-.App .post .btn {
+.nurseRegister input,
+.nurseRegister select {
+  border: 1px solid lightslategray;
+}
+.nurseRegister .row {
+  padding: 1%;
+}
+.nurseRegister h2 {
+  text-align: center;
+  margin-bottom: 10%;
+  font-size: 2.5rem;
+}
+.nurseRegister .form-label {
+  margin: 2%;
+  font-size: 1.5rem;
+}
+.nurseRegister .btn {
+  margin: 3% 35% 0;
+}
+.nurseRegister .form-control {
+  margin-bottom: 1%;
+  font-size: 1.2rem;
+}
+.post {
+  margin-top: 5%;
+}
+.post .btn {
   margin-left: 10px;
 }
-.App .post .card-body {
+.post .card-body {
   padding: 0;
 }
-.App .post .card-header {
+.post .card-header {
   display: flex;
   justify-content: space-between;
   background-color: #DCDCDC;
   font-weight: bold;
   font-size: 1.5rem;
 }
-.App .post .postDiv .card-header {
+.post .postDiv .card-header {
   background-color: #e4e3e3;
   border-top: 1px solid lightgray;
 }
-.App .post .postDiv .card-body {
+.post .postDiv .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px;
+}
+.patientRegister {
+  width: 70%;
+  margin: 10% 0;
+  font-size: 1.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
+  padding: 2%;
+  background-color: #F5F5F5;
+  align-items: flex-start;
+}
+.patientRegister input,
+.patientRegister select {
+  border: 1px solid lightslategray;
+}
+.patientRegister .form-group,
+.patientRegister .form-control,
+.patientRegister .form-label {
+  margin: 8px 15px;
+  font-size: 1.4rem;
+}
+.patientRegister select {
+  width: 50%;
+}
+.patientRegister .check input,
+.patientRegister .check label {
+  margin-bottom: 5px;
+}
+.patientRegister .animal {
+  margin-top: 10px;
+}
+.patientRegister .btn {
+  margin: 10px;
+  width: 20%;
+  font-size: 1.4rem;
 }

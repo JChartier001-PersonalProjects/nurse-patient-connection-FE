@@ -413,6 +413,17 @@ body {
   margin: 5px;
   margin-left: 20%;
 }
+.edit .btn {
+  border: 1px solid #17a2b8;
+  margin: 2%;
+  font-size: 1.4rem;
+}
+.days-avail .form-check {
+  width: 50%;
+  margin-left: 20%;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
 .patientRegister {
   width: 70%;
   margin: 10% 0;

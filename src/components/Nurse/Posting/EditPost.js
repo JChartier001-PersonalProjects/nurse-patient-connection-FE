@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {Form} from "react-bootstrap";
+import {Form, Button} from "react-bootstrap";
 
 const Editpost = (props) => {
         const edit= props.posting[0];
-    
+        const handleClose = props.handleClose;
     const [posting, setPosting] = useState({
         nurse_id: edit.id,
         case_manage: edit.case_manage,
@@ -89,7 +89,8 @@ const Editpost = (props) => {
                 <Form.Check type="checkbox" label="Do you have pets?" name='pets'  checked={posting.pets} onChange={handleCheck} />   
                 <Form.Label>Type of Pet</Form.Label>
                 <Form.Control type="text" name='type_pet' onChange={handlePost}/>   
-
+                <Button variant="outline-info" onClick={handleClose}>Close</Button>
+                <Button variant="outline-info" onClick={handleClose}>Save Changes</Button>
         </div>
 
     )

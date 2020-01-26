@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.fontFamily": "Courier",
+    "workbench.colorTheme": "Community Material Theme Ocean High Contrast",
+    "editor.wordWrap": "on",
+    "terminal.integrated.cursorStyle": "line"
+}

@@ -386,11 +386,22 @@ body {
   margin: 5px 10px;
   font-size: 1.4rem;
 }
-.addAvail .form-group .btn {
-  margin: 3% 35% 0;
-}
 .addAvail .form-group .form-control {
   margin-bottom: 2%;
+  font-size: 1.2rem;
+}
+.addAvail .days_avail,
+.addAvail .shifts_avail {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+.addAvail .days_avail .form-check-label,
+.addAvail .shifts_avail .form-check-label {
+  margin: 0 10px;
+}
+.addAvail .btn {
+  margin: 3% 35% 0;
   font-size: 1.2rem;
 }
 .edit button {

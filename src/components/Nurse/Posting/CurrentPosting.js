@@ -4,6 +4,7 @@ import {Card, Button, Modal, Form, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import EditPost from "./EditPost.js";
 import EditDays from "./EditDays.js";
+import EditShift from "./EditShift.js";
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
@@ -103,13 +104,12 @@ const CurrentPosting = (props) => {
             
             <Card.Header className="lightHeader">Shifts Available<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
               <Modal show={show.showShifts} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header >
                   <Modal.Title>Edit Post</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><EditPost posting={[post]}/></Modal.Body>
+                <Modal.Body><EditShift shift={shift} handleClose={handleClose}/></Modal.Body>
                 <Modal.Footer>
-                  <Button variant="outline-info" onClick={handleClose}>Close</Button>
-                  <Button variant="outline-info" onClick={handleClose}>Save Changes</Button>
+                  
                 </Modal.Footer>
               </Modal>
             </Card.Header>

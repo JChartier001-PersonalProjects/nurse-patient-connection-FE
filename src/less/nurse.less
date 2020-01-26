@@ -84,24 +84,34 @@
 .addAvail{
     .form();
     .form-group{    
-    display: flex;      
+    display: flex;   
+     
     font-size: 1.4rem;
     width: 100%;
     .left, .right{
         width: 48%;
     }
-     .form-control, .form-label, .form-check-label, .form-check.input {
-        margin: 5px 10px;
-        font-size: 1.4rem;
+    .form-control, .form-label, .form-check-label, .form-check.input {
+    margin: 5px 10px;
+    font-size: 1.4rem;
    }
-    .btn{
-        margin: 3% 35% 0;
-    }
+   
     .form-control{
         margin-bottom: 2%;
         font-size: 1.2rem;
-       
     }
+}
+.days_avail, .shifts_avail{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    .form-check-label{
+        margin: 0 10px;
+    }
+}
+.btn{
+    margin: 3% 35% 0;
+    font-size: 1.2rem;
 }
 }
 .edit{    

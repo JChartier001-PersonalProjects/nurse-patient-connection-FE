@@ -90,24 +90,8 @@ const Add_Avail = (props) => {
         <h2>Add Availability</h2>
         <p>Please check options below</p>
             <Form.Group >
+                
                 <div className="left">
-                    <Col xs={12}>                        
-                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
-                    </Col>
-                    <Col xs={12}>
-                                        
-                    </Col>
-                   
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value={!posting.smoke} onChange={handlePost}/>
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value={!posting.lift_res} onChange={handlePost}/>
-                        <Form.Label>Type of Lift Restrictions</Form.Label>
-                        <Form.Control type="text" name='list_res_type' onChange={handlePost}/> 
-                    </Col>
-                </div>
-                <div className="right">
                     <Col xs={12}>
                         <Form.Check type="checkbox" label="Experience with Pediatric Patients" name='peds_exp' value={!posting.peds_exp} onChange={handlePost}/>
                         <Form.Label >How Many Years</Form.Label>
@@ -146,6 +130,23 @@ const Add_Avail = (props) => {
                             <option value="4">4</option>
                             <option value="5+">5+</option>                  
                         </Form.Control> 
+                    </Col>
+                </div>
+                <div className="right">
+                    <Col xs={12}>                        
+                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
+                    </Col>
+                    <Col xs={12}>
+                                        
+                    </Col>
+                   
+                    <Col xs={12}>
+                        <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value={!posting.smoke} onChange={handlePost}/>
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value={!posting.lift_res} onChange={handlePost}/>
+                        <Form.Label>Type of Lift Restrictions</Form.Label>
+                        <Form.Control type="text" name='list_res_type' onChange={handlePost}/> 
                     </Col>
                 </div>
             </Form.Group>

@@ -3,7 +3,7 @@ import axiosWithAuth from "../../api/axiosWithAuth.js";
 import {Card, Button} from "react-bootstrap";
 import CurrentPosting from "./Posting/CurrentPosting.js"
 
-const NurseDashboard = () => {
+const NurseDashboard = (props) => {
     const [nurse, setNurse] = useState();
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const NurseDashboard = () => {
                             </Card.Body>
                         </Card>
                     </div>
-                    <CurrentPosting/>
+                    <CurrentPosting props={props}/>
                     </div>
                 </div>
          )})

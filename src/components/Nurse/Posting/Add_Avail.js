@@ -6,9 +6,28 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 const Add_Avail = (props) => {
     const id = localStorage.getItem('nurse_id')
     const [posting, setPosting] = useState({});       
-    const [days, setDays] = useState([]);
-    const [shifts, setShifts] = useState([]);
+    const [days, setDays] = useState({
+        sunday: 0,
+        monday: 0,
+        tuesday: 0,
+        wednesday: 0,
+        thursday: 0,
+        friday: 0,
+        saturday: 0
+    });
+    const [shifts, setShifts] = useState({
+            am_8hr: 0,
+            pm_8hr: 0,
+            noc_8hr: 0,
+            am_10hr: 0,
+            noc_10hr: 0,
+            am_12hr: 0,
+            noc_12hr: 0,
+            other: ""
 
+
+    });
+    console.log(posting, days, shifts)
     const handlePost = e =>{{
         const stringToBoolean = string => {
             switch(string.toLowerCase().trim()) {
@@ -29,10 +48,11 @@ const Add_Avail = (props) => {
                case 'false': return false;
                default: return e.target.value;
          }}
-        setDays([
-            ...days,
-            {nurse_id: id, day_id: stringToBoolean(e.target.value)}
-        ])
+        setDays({
+           ...days,
+            nurse_id: id, 
+            [e.target.name]: stringToBoolean(e.target.value)
+        })
     }
     const handleShifts = e => {
         const stringToBoolean = string => {
@@ -41,10 +61,11 @@ const Add_Avail = (props) => {
                case 'false': return false;
                default: return e.target.value;
          }}
-       setShifts([
+       setShifts({
            ...shifts,
-           {nurse_id: id, shift_id: stringToBoolean(e.target.value)}
-       ])
+           nurse_id: id, 
+           [e.target.name]: stringToBoolean(e.target.value)
+       })
     }
     
     const handleSubmit = e => {
@@ -71,26 +92,24 @@ const Add_Avail = (props) => {
             <Form.Group >
                 <div className="left">
                     <Col xs={12}>                        
-                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value="true" onChange={handlePost} />
+                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
                     </Col>
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="Do you have pets?" name='pets' value="true" onChange={handlePost} />   
-                        <Form.Label>Type of Pet</Form.Label>
-                        <Form.Control type="text" name='type_pet' onChange={handlePost}/>                  
+                                        
                     </Col>
                    
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value="true" onChange={handlePost}/>
+                        <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value={!posting.smoke} onChange={handlePost}/>
                     </Col>
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value="true" onChange={handlePost}/>
+                        <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value={!posting.lift_res} onChange={handlePost}/>
                         <Form.Label>Type of Lift Restrictions</Form.Label>
                         <Form.Control type="text" name='list_res_type' onChange={handlePost}/> 
                     </Col>
                 </div>
                 <div className="right">
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="Experience with Pediatric Patients" name='peds_exp' value="true" onChange={handlePost}/>
+                        <Form.Check type="checkbox" label="Experience with Pediatric Patients" name='peds_exp' value={!posting.peds_exp} onChange={handlePost}/>
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='peds_years' defaultValue='' onChange={handlePost}>  
                             <option value='' disabled hidden>Please Select</option>
@@ -103,7 +122,7 @@ const Add_Avail = (props) => {
                         </Form.Control> 
                     </Col>
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="PDN/Home Health Experience?" name='pdn_exp' value="true" onChange={handlePost} />
+                        <Form.Check type="checkbox" label="PDN/Home Health Experience?" name='pdn_exp' value={!posting.pdc_exp} onChange={handlePost} />
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='pdn_years'  defaultValue='' onChange={handlePost}>  
                             <option value='' disabled hidden>Please Select</option>
@@ -116,7 +135,7 @@ const Add_Avail = (props) => {
                         </Form.Control>                 
                     </Col>
                     <Col xs={12}>
-                        <Form.Check type="checkbox" label="Experience with Epileptic Patients" name='epilepsy_exp' value="true" onChange={handlePost} />
+                        <Form.Check type="checkbox" label="Experience with Epileptic Patients" name='epilepsy_exp' value={!posting.epilepsy_exp} onChange={handlePost} />
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='epilepsy_years'  defaultValue='' onChange={handlePost}> 
                             <option value='' disabled hidden>Please Select</option>
@@ -132,23 +151,27 @@ const Add_Avail = (props) => {
             </Form.Group>
                 <p className='days'>Days Available</p>
             <Form.Group className='days_avail'>
-                <Form.Check type="checkbox" id='days' label="Sunday" name='day_id' value="1" onChange={handleDays}/>
-                <Form.Check type="checkbox" id='days' label="Monday" name='day_id' value="2" onChange={handleDays} />
-                <Form.Check type="checkbox"  id='days' label="Tuesday" name='day_id' value="3" onChange={handleDays} />
-                <Form.Check type="checkbox" id='days' label="Wednesday" name='day_id' value="4" onChange={handleDays} />
-                <Form.Check type="checkbox"  id='days' label="Thursday" name='day_id' value="5"  onChange={handleDays}/>
-                <Form.Check type="checkbox" id='days' label="Friday" name='day_id' value="6" onChange={handleDays} />
-                <Form.Check type="checkbox" id='days' label="Saturday" name='day_id' value="7" onChange={handleDays} />
+                <Form.Check type="checkbox" id="days" label="Sunday" name='sunday' value={!days.sunday} onChange={handleDays}/>
+                <Form.Check type="checkbox" id='days' label="Monday" name='monday' value={!days.monday} onChange={handleDays} />
+                <Form.Check type="checkbox"  id='days' label="Tuesday" name='tuesday' value={!days.tuesday} onChange={handleDays} />
+                <Form.Check type="checkbox" id='days' label="Wednesday" name='wednesday' value={!days.wednesday} onChange={handleDays} />
+                <Form.Check type="checkbox"  id='days' label="Thursday" name='thursday' value={!days.thursday}  onChange={handleDays}/>
+                <Form.Check type="checkbox" id='days' label="Friday" name='friday' value={!days.friday} onChange={handleDays} />
+                <Form.Check type="checkbox" id='days' label="Saturday" name='saturday' value={!days.saturday} onChange={handleDays} />
             </Form.Group>
                 <p className='days'>Shifts Available</p>
             <Form.Group className='shifts_avail'>
-                <Form.Check type="checkbox" label="8 hr AM" name='shift_id' value="1" onChange={handleShifts}/>
-                <Form.Check type="checkbox" label="8 hr PM" name='shift_id' value="2" onChange={handleShifts}/>
-                <Form.Check type="checkbox" label="8 hr NOC" name='shift_id' value="3" onChange={handleShifts} />
-                <Form.Check type="checkbox" label="10 hr AM" name='shift_id' value="4" onChange={handleShifts} />
-                <Form.Check type="checkbox" label="10 hr NOC" name='shift_id' value="5" onChange={handleShifts}/>
-                <Form.Check type="checkbox" label="12 hr AM" name='shift_id' value="6" onChange={handleShifts} />
-                <Form.Check type="checkbox" label="12 hr NOC" name='shift_id' value="7" onChange={handleShifts}/>  
+                <Form.Check type="checkbox" label="8 hr AM" name='am_8hr' value={!shifts.am_8hr} onChange={handleShifts}/>
+                <Form.Check type="checkbox" label="8 hr PM" name='pm_8hr' value={!shifts.pm_8hr} onChange={handleShifts}/>
+                <Form.Check type="checkbox" label="8 hr NOC" name='noc_8hr' value={!days.noc_8hr} onChange={handleShifts} />
+                <Form.Check type="checkbox" label="10 hr AM" name='am_10hr' value={!days.am_10hr} onChange={handleShifts} />
+                <Form.Check type="checkbox" label="10 hr NOC" name='noc_10hr' value={!days.noc_10hr} onChange={handleShifts}/>
+                <Form.Check type="checkbox" label="12 hr AM" name='am_12hr' value={!days.am_12hr} onChange={handleShifts} />
+                <Form.Check type="checkbox" label="12 hr NOC" name='noc_12hr' value={!days.noc_12hr} onChange={handleShifts}/>  
+                <div>
+                <Form.Label>Other</Form.Label>
+                <Form.Control type="text" name="other" onChange={handleShifts}/>
+                </div>
             </Form.Group>
         <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>          
         </div>

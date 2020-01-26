@@ -393,6 +393,26 @@ body {
   margin-bottom: 2%;
   font-size: 1.2rem;
 }
+.edit button {
+  color: dodgerblue;
+  border: none;
+  background: none;
+}
+.edit .form-control,
+.edit .form-label,
+.edit .form-check,
+.edit select {
+  width: 50%;
+  margin-left: 20%;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+.edit .form-control,
+.edit .form-label,
+.edit .form-check.input {
+  margin: 5px;
+  margin-left: 20%;
+}
 .patientRegister {
   width: 70%;
   margin: 10% 0;

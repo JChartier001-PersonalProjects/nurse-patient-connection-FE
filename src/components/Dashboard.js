@@ -3,7 +3,7 @@ import PatientDashboard from "../components/Patient/patientDashboard.js";
 import NurseDashboard from "../components/Nurse/NurseDashboard.js";
 
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const token = localStorage.getItem('token')
         const parse = JSON.parse(atob(token.split('.')[1]))
         const role = parse.role;
@@ -12,7 +12,7 @@ const Dashboard = () => {
         <div className="dash">
             {role === "patient" ?
             <PatientDashboard/> :          
-            <NurseDashboard/>            
+            <NurseDashboard props={props}/>            
             }
         </div>
         )

@@ -6,7 +6,9 @@ const PatientDashboard = () => {
     const [patient, setPatient] = useState({});
     
     useEffect(() => {
-        const id = localStorage.getItem('userId');
+        const token = localStorage.getItem('token')
+        const parse = JSON.parse(atob(token.split('.')[1]))
+        const id = parse.id
         
         axiosWithAuth()
         .get(`api/patient/${id}`)

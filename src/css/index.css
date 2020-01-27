@@ -163,10 +163,12 @@ h5 {
 }
 h1 {
   font-size: 4rem;
+  font-family: 'Kaushan Script', cursive;
 }
 h2 {
   font-size: 3.2rem;
   padding-bottom: 10px;
+  text-align: center;
 }
 h4 {
   font-size: 2.5rem;
@@ -182,9 +184,7 @@ img {
   height: auto;
 }
 body {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
+  background: #dad7d6;
 }
 body {
   margin: 20px auto;
@@ -193,18 +193,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.App .nurse {
+  max-width: 300px;
+  position: fixed;
+  top: 350px;
+  left: 50px;
+}
+.App .nursePhotoCredit {
+  position: fixed;
+  top: 450px;
+  left: 50px;
+  font-size: 1rem;
+}
+.App .family {
+  max-height: 300px;
+  position: fixed;
+  bottom: 150px;
+  right: 50px;
+}
+.App .familyPhotoCredit {
+  position: fixed;
+  bottom: 225px;
+  right: 60px;
+  font-size: 1rem;
+}
+.App .title,
+.App .titleTwo {
   width: 100%;
+  margin-top: 5%;
+  font-size: 6rem;
+}
+.App .titleTwo {
+  text-align: right;
 }
 .App .header {
   display: flex;
-  width: 650px;
+  text-align: center;
   justify-content: space-between;
 }
 .App .header .btn {
   font-size: 1.4rem;
 }
 .App .registerContainer {
-  margin-top: 200px;
+  margin-top: 100px;
   width: 550px;
   display: flex;
   flex-flow: column nowrap;
@@ -240,7 +272,6 @@ body {
 }
 .App .loginContainer {
   margin-top: 200px;
-  width: 60%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -287,7 +318,7 @@ body {
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
   background-color: #F5F5F5;
-  margin-top: 5%;
+  margin-top: 15%;
 }
 .nurseRegister input,
 .nurseRegister select {
@@ -298,7 +329,6 @@ body {
 }
 .nurseRegister h2 {
   text-align: center;
-  margin-bottom: 10%;
   font-size: 2.5rem;
 }
 .nurseRegister .form-label {
@@ -312,13 +342,18 @@ body {
   margin-bottom: 1%;
   font-size: 1.2rem;
 }
+.dashCont h3 {
+  margin: 10%;
+}
 .nurseDash {
   border: 1px solid #17a2b8;
+  border-radius: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 650px;
-  margin-top: 8%;
+  margin-top: 15%;
+  margin-left: 8%;
   box-shadow: 4px 4px 10px 2px #17a2b8;
 }
 .nurseDash .left {
@@ -331,15 +366,25 @@ body {
   display: flex;
   flex-direction: column;
 }
+.nurseDash .left .card {
+  border-radius: 10px;
+}
 .nurseDash .left .card .card-header {
   display: flex;
   justify-content: space-between;
-  background-color: #DCDCDC;
   font-weight: bold;
   font-size: 1.5rem;
 }
+.nurseDash .search {
+  position: fixed;
+  top: 200px;
+  right: 50px;
+}
 .nurseDash .post {
   margin: 5% 0;
+}
+.nurseDash .post .card {
+  border-radius: 10px;
 }
 .nurseDash .post .list {
   display: flex;
@@ -364,7 +409,6 @@ body {
 .nurseDash .post .card-header {
   display: flex;
   justify-content: space-between;
-  background-color: #DCDCDC;
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -372,8 +416,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #e4e3e3;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #17a2b8;
   font-size: 1.3rem;
 }
 .addAvail {

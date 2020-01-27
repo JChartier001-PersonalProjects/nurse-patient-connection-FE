@@ -38,7 +38,7 @@ const Register = (props) => {
     return(
         <div className="registerContainer">
             <Form onSubmit={handleSubmit}>
-                <h1>Create an Account!</h1>
+                <h2>Create an Account!</h2>
                 <div className="registerForm" >                    
                     <Row >
                         <Col xs={6}>

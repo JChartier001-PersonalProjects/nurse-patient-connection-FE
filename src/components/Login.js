@@ -38,7 +38,7 @@ const Login = props => {
     console.log(user)
     return(
         <div className="loginContainer">
-            <h1>Please Login</h1>
+            <h2>Please Login</h2>
             <div className="loginForm">                    
                 <Form.Label>Email: <Form.Control type="text" name="email" placeholder="Email" onInput={handleInput}/></Form.Label>
                 <Form.Label>Password: <Form.Control type="password" name="password" placeholder="Password" onInput={handleInput}/></Form.Label>

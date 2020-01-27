@@ -5,24 +5,24 @@ import axiosWithAuth from "../../api/axiosWithAuth.js"
 const EditProfile = (props) => {
         const nurse = props.nurse;
         const handleClose = props.handleClose
-    console.log("user", nurse)
+    
         const [user, setUser] = useState({
-            first_name: "",
+            first_name: nurse.first_name,
             last_name:  nurse.last_name,
             email: nurse.email,          
             city: nurse.city,
             state: nurse.state
         });
-
+        console.log("user", user)
     const handleInput = e => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
     }
-
+console.log("props", props)
     const handleSubmit = e => {
-        const id = props.match.params.id
+        const id = props.id
         e.preventDefault();
         axiosWithAuth()
         .put(`/api/user/${id}`, user)
@@ -30,7 +30,7 @@ const EditProfile = (props) => {
             console.log("update profile",response)
             setUser(response.data)
             handleClose("showProfile");
-            // window.location.reload();
+            window.location.reload();
         })
         .catch(error => {
             console.log(error)

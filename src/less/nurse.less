@@ -1,12 +1,11 @@
 .nurseRegister{
     .form();
-    margin-top: 5%;
+    margin-top: 15%;
     .row{
         padding: 1%;
     }
     h2{
      text-align: center;
-     margin-bottom: 10%;
      font-size: 2.5rem;
      }
      .form-label{
@@ -21,14 +20,22 @@
          font-size: 1.2rem;
      }
 }
-
+.dashCont{
+    
+    h3{
+        margin:10%;
+    }
+}
 .nurseDash {
+    .box();
     border: 1px solid #17a2b8;
+    border-radius: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 650px;
-    margin-top:8%;
+    margin-top:15%;
+    margin-left: 8%;
     .box();
     .left{
        display: flex;
@@ -40,17 +47,25 @@
             flex-direction: column;
         }
         .card{ 
+            border-radius: 10px;
             .card-header{
                 display: flex;
                 justify-content: space-between;
-                background-color:  #DCDCDC;
                 font-weight: bold;
                 font-size: 1.5rem;
             }
         }
     }
+    .search{
+        position: fixed;
+        top: 200px;
+        right: 50px;
+    }
     .post{
         margin: 5% 0;
+      .card{
+        border-radius: 10px;
+      }
         .list{
             display: flex;
             flex-direction: column;
@@ -76,7 +91,7 @@
     .card-header{
         display: flex;
         justify-content: space-between;
-        background-color:  #DCDCDC;
+        // background-color:  #DCDCDC;
         font-weight: bold;
         font-size: 1.5rem;
     }
@@ -84,8 +99,8 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-color: #e4e3e3;
-        border-top: 1px solid lightgray;
+        // background-color: #e4e3e3;
+        border-top: 1px solid #17a2b8;
         font-size: 1.3rem;
         }
     }

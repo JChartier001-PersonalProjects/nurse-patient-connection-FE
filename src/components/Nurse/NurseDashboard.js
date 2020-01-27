@@ -1,25 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from "../../api/axiosWithAuth.js";
+import {Link} from "react-router-dom";
 import {Card, Button, Modal} from "react-bootstrap";
 import CurrentPosting from "./Posting/CurrentPosting.js";
 import EditProfile from "./EditProfile.js";
+import EditNurseProfile from "./EditNurseProfile.js";
 
 const NurseDashboard = (props) => {
+ 
     const [nurse, setNurse] = useState();
-console.log("nurse", nurse)
+    
     const [show, setShow] = useState({
         showProfile: false,
-        showDays: false,
-        showShifts: false}
+        showNurseProfile: false}
         );         
       const handleClose = (name) => setShow({name: false});
       const handleShow = (e) => setShow({[e.target.name]:true});
 
+      const token = localStorage.getItem('token')
+      const parse = JSON.parse(atob(token.split('.')[1]))
+      const id = parse.id
+
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        const parse = JSON.parse(atob(token.split('.')[1]))
-        const id = parse.id
-        
         axiosWithAuth()
         .get(`api/nurse/${id}`)
         .then(response => {
@@ -30,16 +32,17 @@ console.log("nurse", nurse)
             console.log(error);
         })
     }, [])
-        
+   
     return(
         <div className="dashCont">
         {nurse && nurse.length > 0 ? 
         nurse.map(nurse => {
             return(
                 <div  key={nurse.id}>
-                    <h3>Welcome {nurse.first_name}</h3>
+                     <h3>Welcome {nurse.first_name}</h3>
                     <div className="nurseDash">
-                        <div className="left">
+                                           <div className="left">
+                                 <p>Looking for a new case? <Link to ="/search">Click Here</Link></p>
                         <Card border="info" style={{ width: "fit-content"}}>
                             <Card.Header>Profile  <Button variant="outline-info" name="showProfile" onClick={handleShow}>Edit</Button>
                   <Modal show={show.showProfile} onHide={handleClose} >
@@ -47,11 +50,8 @@ console.log("nurse", nurse)
                       <Modal.Title>Edit Profile</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                      <EditProfile nurse={nurse}  handleClose={handleClose}/>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      
-                    </Modal.Footer>
+                      <EditProfile nurse={nurse}  id={id} handleClose={handleClose}/>
+                    </Modal.Body>                    
                   </Modal></Card.Header>
                             <Card.Body className="profile">
                                 <Card.Text className="list">
@@ -62,7 +62,17 @@ console.log("nurse", nurse)
                             </Card.Body>
                         </Card>
                         <Card border="info" style={{ width: "fit-content"}}>
-                            <Card.Header>Nurse Profile <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
+                            <Card.Header>Nurse Profile  <Button variant="outline-info" name="showNurseProfile" onClick={handleShow}>Edit</Button>
+                  <Modal show={show.showNurseProfile} onHide={handleClose} >
+                    <Modal.Header>
+                      <Modal.Title>Edit Profile</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                      <EditNurseProfile nurse={nurse}  id={id} handleClose={handleClose}/>
+                    </Modal.Body>
+                    </Modal>
+                    </Card.Header>
+                    
                             <Card.Body className='profile'>
                                 <Card.Text className="list">
                                     <span>License Type: {nurse.license_type}</span>
@@ -74,6 +84,7 @@ console.log("nurse", nurse)
                     </div>
                     <CurrentPosting props={props}/>
                     </div>
+                    {/* <input className='search' type="text" name="search" placeholder="Search"/> */}
                 </div>
          )})
         : null

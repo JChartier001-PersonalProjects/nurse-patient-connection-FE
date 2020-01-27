@@ -1,16 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from "../../api/axiosWithAuth.js";
-import {Card, Button} from "react-bootstrap";
-import CurrentPosting from "./Posting/CurrentPosting.js"
+import {Card, Button, Modal} from "react-bootstrap";
+import CurrentPosting from "./Posting/CurrentPosting.js";
+import EditProfile from "./EditProfile.js";
 
 const NurseDashboard = (props) => {
     const [nurse, setNurse] = useState();
+console.log("nurse", nurse)
+    const [show, setShow] = useState({
+        showProfile: false,
+        showDays: false,
+        showShifts: false}
+        );         
+      const handleClose = (name) => setShow({name: false});
+      const handleShow = (e) => setShow({[e.target.name]:true});
 
     useEffect(() => {
         const token = localStorage.getItem('token')
         const parse = JSON.parse(atob(token.split('.')[1]))
         const id = parse.id
-        console.log("id", id)
+        
         axiosWithAuth()
         .get(`api/nurse/${id}`)
         .then(response => {
@@ -32,7 +41,18 @@ const NurseDashboard = (props) => {
                     <div className="nurseDash">
                         <div className="left">
                         <Card border="info" style={{ width: "fit-content"}}>
-                            <Card.Header>Profile  <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
+                            <Card.Header>Profile  <Button variant="outline-info" name="showProfile" onClick={handleShow}>Edit</Button>
+                  <Modal show={show.showProfile} onHide={handleClose} >
+                    <Modal.Header>
+                      <Modal.Title>Edit Profile</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                      <EditProfile nurse={nurse}  handleClose={handleClose}/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      
+                    </Modal.Footer>
+                  </Modal></Card.Header>
                             <Card.Body className="profile">
                                 <Card.Text className="list">
                                     <span>{nurse.first_name} {nurse.last_name}</span>

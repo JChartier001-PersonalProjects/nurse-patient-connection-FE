@@ -24,16 +24,6 @@ const Editpost = (props) => {
 
     });
 
-    console.log("posting", posting)
-    const handleDelete = e => {   
-        setPosting({
-            ...posting,
-            [e.target.name]: e.target.value
-        })
-        const element = document.getElementById(e.target.id);
-        element.remove();;
-    }
-
     const handleCheck = e => {
         const stringToBoolean = string => {
             switch(string) {

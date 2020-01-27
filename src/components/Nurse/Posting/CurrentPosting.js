@@ -12,7 +12,7 @@ const CurrentPosting = (props) => {
     const shift = posting.shifts;
     const day = posting.days; 
     const id = localStorage.getItem('nurse_id');
-    
+    console.log("posting", posting)
 
     const [show, setShow] = useState({
       showPosting: false,
@@ -106,7 +106,7 @@ const CurrentPosting = (props) => {
             <Card.Header className="lightHeader">Shifts Available<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
               <Modal show={show.showShifts} onHide={handleClose}>
                 <Modal.Header >
-                  <Modal.Title>Edit Post</Modal.Title>
+                  <Modal.Title>Edit Shift</Modal.Title>
                 </Modal.Header>
                 <Modal.Body><EditShift shift={shift} handleClose={handleClose}/></Modal.Body>
                 <Modal.Footer>

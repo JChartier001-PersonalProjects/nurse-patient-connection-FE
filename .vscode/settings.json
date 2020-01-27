@@ -1,6 +1,6 @@
 {
     "terminal.integrated.fontFamily": "monospace",
-    "workbench.colorTheme": "Lavender Contrast (rainglow)",
+    "workbench.colorTheme": "Lavender (rainglow)",
     "editor.wordWrap": "on",
     "terminal.integrated.cursorStyle": "line",
     "editor.fontFamily": "'Quicksand', sans-serif"

@@ -19,7 +19,7 @@ const CurrentPosting = (props) => {
       showDays: false,
       showShifts: false}
       );         
-    const handleClose = (e) => setShow({[e.target.name]:false});
+    const handleClose = (name) => setShow({name: false});
     const handleShow = (e) => setShow({[e.target.name]:true});
     
     
@@ -68,11 +68,13 @@ const CurrentPosting = (props) => {
                   </Modal>
               </Card.Header>
             <Card.Body  className="profile">
-              <Card.Text className="edit">{!!post.case_manage  && "Case Manage"}</Card.Text>
-              <Card.Text className="edit">{!!post.pdn_exp && `${post.pdn_years} years of PDN exp`}</Card.Text>
-              <Card.Text className="edit">{!!post.peds_exp  && `${post.peds_years} years of Peds exp`}</Card.Text>
-              <Card.Text className="edit"> {!!post.epilepsy_exp  && `${post.epilepsy_years} of exp with epileptic patients`}</Card.Text>
-              <Card.Text className="edit">{!!post.lift_res  && `${post.lift_res_type} lift restrictions`}</Card.Text>               
+              <Card.Text  className="list">
+                <span>{!!post.case_manage  && "Case Manage"}</span>
+                <span>{!!post.pdn_exp && `${post.pdn_years} years of PDN exp`}</span>
+                <span>{!!post.peds_exp  && `${post.peds_years} years of Peds exp`}</span>
+                <span>{!!post.epilepsy_exp  && `${post.epilepsy_years} of exp with epileptic patients`}</span>
+                <span>{!!post.lift_res  && `${post.lift_res_type} lift restrictions`}</span>
+              </Card.Text>               
             </Card.Body>
 
 
@@ -91,17 +93,16 @@ const CurrentPosting = (props) => {
               </Modal>
             </Card.Header>
             <Card.Body className="profile">
-              <Card.Text>{!!day[0].sunday && "Sunday"}</Card.Text>
-              <Card.Text>{!!day[0].monday && "Monday"}</Card.Text>
-              <Card.Text>{!!day[0].tuesday && "Tuesday"}</Card.Text>
-              <Card.Text>{!!day[0].wednesday && "Wednesday"}</Card.Text>
-              <Card.Text>{!!day[0].thursday && "Thursday"}</Card.Text>
-              <Card.Text>{!!day[0].friday && "Friday"}</Card.Text>
-              <Card.Text>{!!day[0].saturday && "Saturday"}</Card.Text>            
+              <Card.Text className="list">
+                <span>{!!day[0].sunday && "Sunday"}</span>
+                <span> {!!day[0].monday && "Monday"}</span>
+                <span>{!!day[0].tuesday && "Tuesday"}</span>
+                <span>{!!day[0].wednesday && "Wednesday"}</span>
+                <span> {!!day[0].thursday && "Thursday"}</span>
+                <span> {!!day[0].friday && "Friday"}</span>
+                <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>            
             </Card.Body>
 
-
-            
             <Card.Header className="lightHeader">Shifts Available<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
               <Modal show={show.showShifts} onHide={handleClose}>
                 <Modal.Header >
@@ -114,13 +115,15 @@ const CurrentPosting = (props) => {
               </Modal>
             </Card.Header>
             <Card.Body className="profile">                      
-              <Card.Text >{!!shift[0].am_8hr  && "8 hr AM"}</Card.Text>
-              <Card.Text >{!!shift[0].pm_8hr  && "8 hr PM"}</Card.Text>
-              <Card.Text >{!!shift[0].noc_8hr  && "8 hr NOC"}</Card.Text>
-              <Card.Text >{!!shift[0].am_10hr  && "10 hr AM"}</Card.Text>
-              <Card.Text >{!!shift[0].pm_10hr  && "10 hr PM"}</Card.Text>
-              <Card.Text >{!!shift[0].am_12hr  && "12 hr AM"}</Card.Text>
-              <Card.Text >{!!shift[0].noc_12hr  && "12 hr NOC"}</Card.Text>
+              <Card.Text  className="list">
+                <span>{!!shift[0].am_8hr  && "8 hr AM"}</span>
+                <span >{!!shift[0].pm_8hr  && "8 hr PM"}</span>
+                <span>{!!shift[0].noc_8hr  && "8 hr NOC"}</span>
+                <span>{!!shift[0].am_10hr  && "10 hr AM"}</span>
+                <span >{!!shift[0].pm_10hr  && "10 hr PM"}</span>
+                <span >{!!shift[0].am_12hr  && "12 hr AM"}</span>
+                <span >{!!shift[0].noc_12hr  && "12 hr NOC"}</span>
+              </Card.Text>
             </Card.Body>
           </Card>
                      :

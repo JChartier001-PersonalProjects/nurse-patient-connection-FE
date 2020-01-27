@@ -11,7 +11,6 @@ const Nav = (props) => {
         localStorage.removeItem('token');
         localStorage.removeItem('nurse_id');
         localStorage.removeItem('role');
-        // localStorage.removeItem('token');
         props.history.push('/login')
        
     }

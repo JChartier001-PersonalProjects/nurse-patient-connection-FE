@@ -34,17 +34,21 @@ const NurseDashboard = (props) => {
                         <Card border="info" style={{ width: "fit-content"}}>
                             <Card.Header>Profile  <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
                             <Card.Body className="profile">
-                                <Card.Text>{nurse.first_name} {nurse.last_name}</Card.Text>
-                                <Card.Text>{nurse.email}</Card.Text>
-                                <Card.Text>{nurse.city}, {nurse.state}</Card.Text>
+                                <Card.Text className="list">
+                                    <span>{nurse.first_name} {nurse.last_name}</span>
+                                    <span>{nurse.email}</span>
+                                    <span>{nurse.city}, {nurse.state}</span>                                    
+                                </Card.Text>
                             </Card.Body>
                         </Card>
                         <Card border="info" style={{ width: "fit-content"}}>
                             <Card.Header>Nurse Profile <Button type="submit" variant="outline-info">Edit</Button></Card.Header>
                             <Card.Body className='profile'>
-                                <Card.Text>License Type: {nurse.license_type}</Card.Text>
-                                <Card.Text>Ped Vent Cert: {nurse.rsc_child === 1 ? "Yes" : "No"}</Card.Text>
-                                <Card.Text>Adult Vent Cert: {nurse.rsc_adult === 1 ? "Yes" : "No"}</Card.Text>
+                                <Card.Text className="list">
+                                    <span>License Type: {nurse.license_type}</span>
+                                    <span>Ped Vent Cert: {nurse.rsc_child === 1 ? "Yes" : "No"}</span>
+                                    <span> Adult Vent Cert: {nurse.rsc_adult === 1 ? "Yes" : "No"}</span>
+                                </Card.Text>
                             </Card.Body>
                         </Card>
                     </div>

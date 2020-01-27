@@ -186,9 +186,22 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+body {
+  margin: 20px auto;
+}
 .App {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.App .header {
+  display: flex;
+  width: 650px;
+  justify-content: space-between;
+}
+.App .header .btn {
+  font-size: 1.4rem;
 }
 .App .registerContainer {
   margin-top: 200px;
@@ -259,7 +272,6 @@ body {
 }
 .App .dash {
   display: flex;
-  width: 800px;
 }
 .App .dash h3 {
   text-align: center;
@@ -301,19 +313,23 @@ body {
   font-size: 1.2rem;
 }
 .nurseDash {
+  border: 1px solid #17a2b8;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   width: 650px;
-}
-.nurseDash .profile p {
-  line-height: 1;
-  padding-bottom: 5px;
+  margin-top: 8%;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
 }
 .nurseDash .left {
-  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 500px;
 }
-.nurseDash .left .card {
-  margin: 20% 0;
+.nurseDash .left .list {
+  display: flex;
+  flex-direction: column;
 }
 .nurseDash .left .card .card-header {
   display: flex;
@@ -323,7 +339,11 @@ body {
   font-size: 1.5rem;
 }
 .nurseDash .post {
-  margin-top: 5%;
+  margin: 5% 0;
+}
+.nurseDash .post .list {
+  display: flex;
+  flex-direction: column;
 }
 .nurseDash .post .noPost .card-body {
   padding: 5px;
@@ -333,6 +353,7 @@ body {
 }
 .nurseDash .post .btn {
   margin-left: 10px;
+  font-size: 1rem;
 }
 .nurseDash .post .card-body {
   padding: 5px 0;
@@ -434,6 +455,9 @@ body {
   margin-left: 20%;
   font-size: 1.4rem;
   margin-bottom: 5px;
+}
+.modal-content {
+  border: 3px solid #a0e8f3;
 }
 .patientRegister {
   width: 70%;

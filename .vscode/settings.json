@@ -1,6 +1,7 @@
 {
-    "terminal.integrated.fontFamily": "Courier",
-    "workbench.colorTheme": "Community Material Theme Ocean High Contrast",
+    "terminal.integrated.fontFamily": "monospace",
+    "workbench.colorTheme": "Lavender Contrast (rainglow)",
     "editor.wordWrap": "on",
-    "terminal.integrated.cursorStyle": "line"
+    "terminal.integrated.cursorStyle": "line",
+    "editor.fontFamily": "'Quicksand', sans-serif"
 }

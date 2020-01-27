@@ -23,28 +23,38 @@
 }
 
 .nurseDash {
+    border: 1px solid #17a2b8;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     width: 650px;
-    .profile p {
-        line-height: 1.0;
-        padding-bottom: 5px;
-    }        
+    margin-top:8%;
+    .box();
     .left{
-        margin-right: 10%;
-        .card{
-            margin: 20% 0;       
+       display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+        height: 500px;
+        .list{
+            display: flex;
+            flex-direction: column;
+        }
+        .card{ 
             .card-header{
                 display: flex;
                 justify-content: space-between;
-                background-color: #DCDCDC;
+                background-color:  #DCDCDC;
                 font-weight: bold;
                 font-size: 1.5rem;
             }
         }
     }
     .post{
-        margin-top: 5%;
+        margin: 5% 0;
+        .list{
+            display: flex;
+            flex-direction: column;
+        }
         .noPost{
             .card-body{
                 padding: 5px;
@@ -55,13 +65,13 @@
         }
     .btn{
         margin-left: 10px;
+        font-size: 1rem;
     }
     .card-body{
-        padding: 5px 0;  
+        padding: 5px 0;
         display: flex;
         flex-direction: column;
-        align-items: center; 
-            
+        align-items: center;             
     }
     .card-header{
         display: flex;
@@ -77,10 +87,10 @@
         background-color: #e4e3e3;
         border-top: 1px solid lightgray;
         font-size: 1.3rem;
-        
         }
-   
-}}
+    }
+}
+
 .addAvail{
     .form();
     .form-group{    
@@ -101,20 +111,22 @@
         font-size: 1.2rem;
     }
 }
-.days_avail, .shifts_avail{
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-between;
-    .form-check-label{
-        margin: 0 10px;
+    .days_avail, .shifts_avail{
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        .form-check-label{
+            margin: 0 10px;
+        }
+    }
+    .btn{
+        margin: 3% 35% 0;
+        font-size: 1.2rem;
     }
 }
-.btn{
-    margin: 3% 35% 0;
-    font-size: 1.2rem;
-}
-}
+
 .edit{    
+    
     button{
         color: dodgerblue;
         border: none;
@@ -124,8 +136,7 @@
         width: 50%;
         margin-left: 20%;
         font-size: 1.4rem;
-        margin-bottom: 5px;
-        
+        margin-bottom: 5px;        
     }
     .form-control, .form-label,  .form-check.input {
         margin: 5px; 
@@ -135,9 +146,9 @@
     border: 1px solid #17a2b8;
     margin: 2%;
     font-size: 1.4rem;
+    }   
 }
-   
-}
+
 .days-avail{
     .form-check{
         width: 50%;
@@ -147,4 +158,6 @@
     }
    
 }
-
+.modal-content{
+    border: 3px solid #a0e8f3;
+}

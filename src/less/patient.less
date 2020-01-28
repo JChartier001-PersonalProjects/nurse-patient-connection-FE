@@ -1,48 +1,110 @@
 .patientRegister{
     display: flex;
-    width: 70%;
-    margin: 10% 0;
+    width: 110%;
+    margin: 10% auto;
     font-size: 1.4rem;
     .form();
+    padding: 3%;
     align-items: flex-start;
-    .form-group, .form-control, .form-label, {
-        margin: 8px 15px;
+    .container{
+        display: flex;
+        flex-direction: column;
+       
+    }
+    .form-group, .form-control, .form-label {
+        margin: 8px 10px;
         font-size: 1.4rem;
    }
    select{
-       width: 50%;
+       width: 75%;
    }
    .check input, .check label{
        margin-bottom: 5px;
    }
-   .animal{
-       margin-top: 10px;
-   }
+   .check{
+        width: 100%;
+        .form-check{
+        width: 100%;
+        padding: 0 10%;
+        }
+}
+.pets{
+    padding: 2%;
+}
+.input{
+width: 50%;
+}
+  
    .btn{
        margin: 10px;
        width: 20%;
        font-size:1.4rem;
    }
+}
+
    .patientDash {
-    display: flex;
-    justify-content: space-between;
-    width: 650px;
-    .profile p, .need p {
-        line-height: 1.0;
-        padding-bottom: 5px;
-    }        
-    .left{
+        border: 1px solid #17a2b8;
+        .box();
+        border-radius: 10px;
+                width: 650px;
+        margin-top:15%;
+        margin-left: 8%;
+        h3{
+            margin: 5%;
+        }
+        .container{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+        .post{
+            margin: 5% 0;
+          .card{
+            border-radius: 10px;
+          }
+            .list{
+                display: flex;
+                flex-direction: column;
+            }
+            .card-body{
+                padding: 5px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;             
+            }
+            .card-header{
+                display: flex;
+                justify-content: space-between;
+                // background-color:  #DCDCDC;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+            .lightHeader{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                // background-color: #e4e3e3;
+                border-top: 1px solid #17a2b8;
+                font-size: 1.3rem;
+                }
+        }
+         
+    .accountInfo{
         margin-right: 10%;
+        
     .card{
-        margin: 20% 0;       
+        margin: 20% 0;   
+        border-radius: 10px;    
         .card-header{
             display: flex;
-            justify-content: space-between;
-            background-color: #DCDCDC;
+            justify-content: space-between;            
             font-weight: bold;
             font-size: 1.5rem;
         }
-    }
-    }
+        .list{
+            display: flex;
+            flex-direction: column;
+        }
 }
+    }
 }

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import axiosWithAuth from "../../../api/axiosWithAuth.js";
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import axiosWithAuth from "../../api/axiosWithAuth.js";
+import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
 
 
-const Add_Avail = (props) => {
+const AddNeed = (props) => {
     const id = localStorage.getItem('nurse_id')
     const [posting, setPosting] = useState({});       
     const [days, setDays] = useState({
@@ -32,8 +32,8 @@ const Add_Avail = (props) => {
            case 'false': return false;
            default: return string;
      }}
-    console.log(posting, days, shifts)
-    const handlePost = e =>{
+    
+    const handleInput = e =>{
         setPosting({
             ...posting,
             nurse_id: id,
@@ -86,69 +86,27 @@ const Add_Avail = (props) => {
     
     return(        
         <div className="addAvail">
-        <h2>Add Availability</h2>
-        <p>Please check options below</p>
-            <Form.Group >
-                
-                <div className="left">
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Experience with Pediatric Patients" name='peds_exp' value={!posting.peds_exp} onChange={handlePost}/>
-                        <Form.Label >How Many Years</Form.Label>
-                        <Form.Control as="select" name='peds_years' defaultValue='' onChange={handlePost}>  
-                            <option value='' disabled hidden>Please Select</option>
-                            <option value="1">0-1</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option> 
-                            <option value="4">4</option>
-                            <option value="5+">5+</option>
-                        </Form.Control> 
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="PDN/Home Health Experience?" name='pdn_exp' value={!posting.pdc_exp} onChange={handlePost} />
-                        <Form.Label >How Many Years</Form.Label>
-                        <Form.Control as="select" name='pdn_years'  defaultValue='' onChange={handlePost}>  
-                            <option value='' disabled hidden>Please Select</option>
-                            <option value="1">0-1</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option> 
-                            <option value="4">4</option>
-                            <option value="5+">5+</option>                  
-                        </Form.Control>                 
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Experience with Epileptic Patients" name='epilepsy_exp' value={!posting.epilepsy_exp} onChange={handlePost} />
-                        <Form.Label >How Many Years</Form.Label>
-                        <Form.Control as="select" name='epilepsy_years'  defaultValue='' onChange={handlePost}> 
-                            <option value='' disabled hidden>Please Select</option>
-                            <option value="1">0-1</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option> 
-                            <option value="4">4</option>
-                            <option value="5+">5+</option>                  
-                        </Form.Control> 
-                    </Col>
+            <Modal.Title>Add Your Current Nurse Needs</Modal.Title>
+            <Modal.Body>
+            <div className="check">
+                    <Form.Label>Nurse Requirements</Form.Label>
+                    <Form.Check type="checkbox" label="Who does the patient live with?" name='case_manager' value="true" onChange={handleInput}/>
+                    <Form.Check type="checkbox" label="" name='vent' value="true" onChange={handleInput}/>
+                    <Form.Check type="checkbox" label="G-tube" name='gt' value="true" onChange={handleInput}/>                    
+                    <Form.Check type="checkbox" label="Developmentally Delayed" name='develop_disabled' value="true" onChange={handleInput}/>
+                    <Form.Check type="checkbox" label="Verbal" name='verbal' value="true" onChange={handleInput}/>
+                    <Form.Check type="checkbox" label="Non-verbal" name='verbal' value="false" onChange={handleInput}/>
+                    <Form.Check type="checkbox" label="Attends School" name='school' value="true" onChange={handleInput}/>
+                    </div >
+            </Modal.Body>
+            <div className="check">
+                <Form.Check type="checkbox" label="Nurse to attend appointments?" name='appt' value="true" onChange={handleInput}/>
+                <Form.Check type="checkbox" label="If yes, will nurse need to use own car?" name='use_car' value="true" onChange={handleInput}/>
                 </div>
-                <div className="right">
-                    <Col xs={12}>                        
-                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
-                    </Col>
-                    <Col xs={12}>
-                                        
-                    </Col>
-                   
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value={!posting.smoke} onChange={handlePost}/>
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value={!posting.lift_res} onChange={handlePost}/>
-                        <Form.Label>Type of Lift Restrictions</Form.Label>
-                        <Form.Control type="text" name='list_res_type' onChange={handlePost}/> 
-                    </Col>
+                <div className="check animal">
+                <Form.Check type="checkbox" label="Animals in the home?" name='animals' value="true" onChange={handleInput}/>
                 </div>
-            </Form.Group>
+               
                 <p className='days'>Days Available</p>
             <Form.Group className='days_avail'>
                 <Form.Check type="checkbox" id="days" label="Sunday" name='sunday' value={!days.sunday} onChange={handleDays}/>
@@ -182,4 +140,4 @@ const Add_Avail = (props) => {
 
 
 
-export default Add_Avail;
+export default AddNeed;

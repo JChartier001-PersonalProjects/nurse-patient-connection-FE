@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import axiosWithAuth from "../../api/axiosWithAuth.js";
+import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import {Card, Button, Modal, Form, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import AddNeed from "./AddNeed.js"
+import AddNeed from "../case_posting/AddNeed.js";
+import EditPostPatient from "./EditPatientInfo.js"
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
     const post = posting[0]; 
     const shift = posting.shifts;
     const day = posting.days; 
-    const id = localStorage.getItem('nurse_id');
-    console.log("posting", posting)
+    console.log("day", day)
 
     const [show, setShow] = useState({
       showPosting: false,
@@ -46,20 +46,20 @@ const CurrentPosting = (props) => {
             console.log(error)
         })
     }
-
+console.log("post", post, "posting", posting)
     return (
         <div  className="post">
         {post && post.length !==0 ? 
           <Card border="info" style={{ width: "fit-content"}}>
             <Card.Header>Current Postings<Button variant="outline-info" onClick={handleDelete}>Delete</Button></Card.Header> 
-              <Card.Header className="lightHeader">About Me
+              <Card.Header className="lightHeader">About Patient
                 <Button variant="outline-info" name="showPosting" onClick={handleShow}>Edit</Button>
                   <Modal show={show.showPosting} onHide={handleClose} >
                     <Modal.Header>
                       <Modal.Title>Edit Post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                      {/* <EditPost   posting={[post]} handleClose={handleClose}/> */}
+                      <EditPostPatient   posting={[post]}  handleClose={handleClose}/>
                     </Modal.Body>
                     <Modal.Footer>
                       
@@ -68,16 +68,19 @@ const CurrentPosting = (props) => {
               </Card.Header>
             <Card.Body  className="profile">
               <Card.Text  className="list">
-                <span>{!!post.case_manage  && "Case Manage"}</span>
-                <span>{!!post.pdn_exp && `${post.pdn_years} years of PDN exp`}</span>
-                <span>{!!post.peds_exp  && `${post.peds_years} years of Peds exp`}</span>
-                <span>{!!post.epilepsy_exp  && `${post.epilepsy_years} of exp with epileptic patients`}</span>
-                <span>{!!post.lift_res  && `${post.lift_res_type} lift restrictions`}</span>
+                <span>{!!post.case_manager  && <li>Case Manager Needed</li>}</span>
+                <span>{!!post.lift_req && <li>Lift Requirements {post.lift_weight}</li>}</span>
+                <span>{!!post.school  && <li>Attends school from {post.school_time}</li>}</span>
+                <span>{!!post.appt && <li>Nurse to attend appt with patient</li>}</span>
+                <span>{!!post.appt &&  <li>Does nurse need to use own car for appt? {post.use_car === 1 ? "Yes": "No"}</li>}</span>
+                <span>{!!post.pets  && <li>Pets in home: {post.pet_type}</li>}</span>
+                <span>{!!post.smoke && <li>Family Smokes</li>}</span>
+                <span>{!!post.live_with && <li>Patient lives with: {post.live_with}</li>}</span>
               </Card.Text>               
             </Card.Body>
 
 
-            <Card.Header className="lightHeader">Days Available
+            <Card.Header className="lightHeader">Days Needed
             <Button variant="outline-info" name="showDays" onClick={handleShow}>Edit</Button>
               <Modal show={show.showDays} name="showDays" >
                 <Modal.Header>
@@ -92,17 +95,17 @@ const CurrentPosting = (props) => {
               </Modal>
             </Card.Header>
             <Card.Body className="profile">
-              <Card.Text className="list">
+              <Card.Text className="list"> 
                 <span>{!!day[0].sunday && "Sunday"}</span>
                 <span> {!!day[0].monday && "Monday"}</span>
                 <span>{!!day[0].tuesday && "Tuesday"}</span>
                 <span>{!!day[0].wednesday && "Wednesday"}</span>
                 <span> {!!day[0].thursday && "Thursday"}</span>
                 <span> {!!day[0].friday && "Friday"}</span>
-                <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>            
+                <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>
             </Card.Body>
 
-            <Card.Header className="lightHeader">Shifts Available<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
+            <Card.Header className="lightHeader">Shifts Needed<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
               <Modal show={show.showShifts} onHide={handleClose}>
                 <Modal.Header >
                   <Modal.Title>Edit Shift</Modal.Title>
@@ -115,13 +118,13 @@ const CurrentPosting = (props) => {
             </Card.Header>
             <Card.Body className="profile">                      
               <Card.Text  className="list">
-                {/* <span>{!!shift[0].am_8hr  && "8 hr AM"}</span>
+                <span>{!!shift[0].am_8hr  && "8 hr AM"}</span>
                 <span >{!!shift[0].pm_8hr  && "8 hr PM"}</span>
                 <span>{!!shift[0].noc_8hr  && "8 hr NOC"}</span>
                 <span>{!!shift[0].am_10hr  && "10 hr AM"}</span>
                 <span >{!!shift[0].pm_10hr  && "10 hr PM"}</span>
                 <span >{!!shift[0].am_12hr  && "12 hr AM"}</span>
-                <span >{!!shift[0].noc_12hr  && "12 hr NOC"}</span> */}
+                <span >{!!shift[0].noc_12hr  && "12 hr NOC"}</span> 
               </Card.Text>
             </Card.Body>
           </Card>
@@ -132,12 +135,10 @@ const CurrentPosting = (props) => {
               <Card.Text>You have no current postings</Card.Text>
               <Button variant="outline-info" name="showAddNeed" onClick={handleShow}>Add New Post</Button>
                   <Modal show={show.showAddNeed} onHide={handleClose} >
-                    {/* <Modal.Header>
-                      <Modal.Title>Add Your Current Nurse Needs</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body > */}
-                      <AddNeed/>
-                    {/* </Modal.Body> */}
+                    <Modal.Title>Add Current Nurse Needs</Modal.Title>
+                    <Modal.Body>
+                      <AddNeed  id={props.id} need={props.need}/>
+                      </Modal.Body>
                     </Modal>
             </Card.Body>
           </Card>

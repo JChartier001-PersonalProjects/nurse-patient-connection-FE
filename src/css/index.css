@@ -16,6 +16,9 @@
 .box {
   box-shadow: 4px 4px 10px 2px #17a2b8;
 }
+.border {
+  border-radius: 10px;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -193,34 +196,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .App .nurse {
-  max-width: 300px;
-  position: fixed;
-  top: 350px;
-  left: 50px;
-}
-.App .nursePhotoCredit {
-  position: fixed;
-  top: 450px;
-  left: 50px;
-  font-size: 1rem;
+  max-width: 200px;
+  position: relative;
+  top: -40px;
+  left: -35%;
 }
 .App .family {
-  max-height: 300px;
-  position: fixed;
-  bottom: 150px;
-  right: 50px;
-}
-.App .familyPhotoCredit {
-  position: fixed;
-  bottom: 225px;
-  right: 60px;
-  font-size: 1rem;
+  max-width: 200px;
+  position: relative;
+  bottom: 370px;
+  right: -35%;
 }
 .App .title,
 .App .titleTwo {
-  width: 100%;
+  width: 50%;
   margin-top: 5%;
   font-size: 6rem;
 }
@@ -231,6 +223,7 @@ body {
   display: flex;
   text-align: center;
   justify-content: space-between;
+  width: 75%;
 }
 .App .header .btn {
   font-size: 1.4rem;
@@ -498,9 +491,7 @@ body {
   border: 3px solid #a0e8f3;
 }
 .patientRegister {
-  width: 110%;
-  margin: 10% auto;
-  font-size: 1.4rem;
+  margin-top: 55%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -510,107 +501,115 @@ body {
   box-shadow: 4px 4px 10px 2px #17a2b8;
   padding: 2%;
   background-color: #F5F5F5;
-  padding: 3%;
-  align-items: flex-start;
+  font-size: 1.4rem;
 }
 .patientRegister input,
 .patientRegister select {
   border: 1px solid lightslategray;
 }
-.patientRegister .container {
-  display: flex;
-  flex-direction: column;
-}
-.patientRegister .form-group,
 .patientRegister .form-control,
-.patientRegister .form-label {
-  margin: 8px 10px;
-  font-size: 1.4rem;
-}
-.patientRegister select {
+.patientRegister .form-select,
+.patientRegister .form-check {
   width: 75%;
+  margin: 1%;
+  font-size: 1.2rem;
 }
-.patientRegister .check input,
-.patientRegister .check label {
-  margin-bottom: 5px;
+.patientRegister .form-label {
+  margin: 1%;
 }
-.patientRegister .check {
-  width: 100%;
-}
-.patientRegister .check .form-check {
-  width: 100%;
-  padding: 0 10%;
-}
-.patientRegister .pets {
-  padding: 2%;
-}
-.patientRegister .input {
-  width: 50%;
+.patientRegister .form-check {
+  padding: 0 5%;
 }
 .patientRegister .btn {
-  margin: 10px;
-  width: 20%;
-  font-size: 1.4rem;
+  margin: 4%;
 }
-.patientDash {
+.middle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.middle .dash {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -200px;
+}
+.middle .patientDash {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
   border: 1px solid #17a2b8;
-  box-shadow: 4px 4px 10px 2px #17a2b8;
   border-radius: 10px;
-  width: 650px;
-  margin-top: 15%;
-  margin-left: 8%;
-}
-.patientDash h3 {
+  box-shadow: 4px 4px 10px 2px #17a2b8;
+  padding: 2%;
+  background-color: #F5F5F5;
+  width: 50%;
   margin: 5%;
 }
-.patientDash .container {
+.middle .patientDash input,
+.middle .patientDash select {
+  border: 1px solid lightslategray;
+}
+.middle .patientDash .key {
+  width: 100%;
+}
+.middle .patientDash .container {
+  width: 100%;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  justify-content: space-between;
+  align-content: space-between;
+  padding: 2%;
 }
-.patientDash .post {
-  margin: 5% 0;
+.middle .patientDash .container .accountInfo .need {
+  margin-top: 10%;
 }
-.patientDash .post .card {
+.middle .patientDash .container .card {
+  margin: 0 10%;
   border-radius: 10px;
 }
-.patientDash .post .list {
-  display: flex;
-  flex-direction: column;
-}
-.patientDash .post .card-body {
-  padding: 5px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.patientDash .post .card-header {
+.middle .patientDash .container .card .card-header {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
   font-size: 1.5rem;
 }
-.patientDash .post .lightHeader {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1px solid #17a2b8;
-  font-size: 1.3rem;
+.middle .patientDash .container .card .card-body {
+  text-align: center;
 }
-.patientDash .accountInfo {
-  margin-right: 10%;
-}
-.patientDash .accountInfo .card {
-  margin: 20% 0;
-  border-radius: 10px;
-}
-.patientDash .accountInfo .card .card-header {
-  display: flex;
-  justify-content: space-between;
+.middle .patientDash .container .card .head {
   font-weight: bold;
-  font-size: 1.5rem;
 }
-.patientDash .accountInfo .card .list {
+.middle .patientDash .list {
   display: flex;
   flex-direction: column;
+  text-align: left;
+}
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3%;
+}
+.addNeed {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+}
+.addNeed .form-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+}
+.addNeed .form-group .form-control,
+.addNeed .form-group .form-check {
+  font-size: 1.2rem;
+  margin: 2%;
+}
+.addNeed .days_avail,
+.addNeed .shifts_avail {
+  display: flex;
+  flex-flow: wrap;
 }

@@ -264,7 +264,8 @@ body {
   width: 20%;
 }
 .App .loginContainer {
-  margin-top: 200px;
+  position: absolute;
+  top: 450px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

@@ -23,6 +23,7 @@ const CurrentPosting = (props) => {
     
     useEffect(() => {
         const id = props.id
+        console.log(id, "patientID")
         axiosWithAuth()
         .get(`/api/case/${id}`)
         .then(response => {

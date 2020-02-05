@@ -31,7 +31,7 @@ const NurseRegister = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('http://localhost:4000/api/nurse', nurse)
+        .post('/api/nurse', nurse)
         .then(response => {
             console.log(response);
             props.history.push('dashboard');            

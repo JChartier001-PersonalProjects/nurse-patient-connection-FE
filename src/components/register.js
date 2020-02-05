@@ -22,12 +22,16 @@ const Register = (props) => {
    
     
     const handleSubmit = e => {
-        const role = localStorage.getItem('role')
+        
         e.preventDefault();       
         axios
-        .post('http://localhost:4000/api/auth/register', user)
+        .post('https://connections-p-n.herokuapp.com/api/auth/register', user)
         .then(response => {   
-            localStorage.setItem("token", response.data.token);            
+            localStorage.setItem('token', response.data.token)
+            const token = localStorage.getItem('token')
+            const parse = JSON.parse(atob(token.split('.')[1])) 
+            localStorage.setItem('role', parse.role);     
+            const role = localStorage.getItem('role')    
             props.history.push(`/${role}`);            
         })
         .catch(error => {

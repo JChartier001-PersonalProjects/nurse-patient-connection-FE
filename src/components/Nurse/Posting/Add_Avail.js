@@ -4,7 +4,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 
 
 const Add_Avail = (props) => {
-    const id = localStorage.getItem('nurse_id')
+    const id = props.match.params.id    
     const [posting, setPosting] = useState({});       
     const [days, setDays] = useState({
         sunday: 0,
@@ -72,8 +72,8 @@ const Add_Avail = (props) => {
         console.log(token)
         e.preventDefault();
         axiosWithAuth()
-        .post(`http://localhost:4000/api/avail`, 
-            {posting, days, shifts}
+        .post(`/api/avail`, 
+            {posting: posting, days : days, shifts: shifts}
             
         )
         .then(response => {

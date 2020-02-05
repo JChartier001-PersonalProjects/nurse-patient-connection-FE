@@ -5,9 +5,10 @@ import axiosWithAuth from "../../../api/axiosWithAuth.js";
 const EditPostPatient= (props) => {
     const edit= props.posting[0];
     const handleClose = props.handleClose;
-        
+        console.log(edit)
     const [posting, setPosting] = useState({
-        pt_id: edit.id,
+        id: edit.id,
+        pt_id: edit.pt_id,
         need_id: edit.need_id,
         smoke: edit.smoke,
         case_manager: edit.case_manager,       
@@ -59,22 +60,30 @@ const EditPostPatient= (props) => {
     };
     
     const handleInput = e =>{
+        const stringToBoolean = string => {
+            switch(string) {
+               case 'true': return 1;
+               case 'false': return 0;
+               default: return e.target.value;
+         }}
          setPosting({
              ...posting,
-             [e.target.name]: e.target.value
+             [e.target.name]:stringToBoolean(e.target.value)
          })
     }
 
     const handleSubmit = e =>{
+        const id = posting.id
         e.preventDefault();
         axiosWithAuth()
-        .put('/api/avail/posting', posting)
-        .then(posting => {
+        .put(`/api/case/${id}`, posting)
+        .then(response => {
             axiosWithAuth()
-            .put('/api/case/')
-            // console.log("response", response)
+            .get(`/api/case/${id}`)
+            console.log("response", response)
+            setPosting(response.data)
             handleClose('showPosting')
-            // window.location.reload();
+            window.location.reload();
         })
         .catch(error => {
             console.log(error)

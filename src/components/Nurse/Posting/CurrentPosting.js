@@ -8,11 +8,12 @@ import EditShift from "./EditShift.js";
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
-    const post = posting[0]; 
+    const post = posting.posting; 
     const shift = posting.shifts;
     const day = posting.days; 
-    const id = localStorage.getItem('nurse_id');
-    console.log("posting", posting)
+    const id = props.id
+    console.log("props", props, id)
+    console.log("posting",post, shift, day)
 
     const [show, setShow] = useState({
       showPosting: false,
@@ -60,7 +61,7 @@ const CurrentPosting = (props) => {
                       <Modal.Title>Edit Post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                      <EditPost   posting={[post]} handleClose={handleClose}/>
+                      <EditPost   posting={[post[0]]} days={day[0]} shifts={shift[0]}handleClose={handleClose}/>
                     </Modal.Body>
                     <Modal.Footer>
                       
@@ -69,11 +70,11 @@ const CurrentPosting = (props) => {
               </Card.Header>
             <Card.Body  className="profile">
               <Card.Text  className="list">
-                <span>{!!post.case_manage  && "Case Manage"}</span>
-                <span>{!!post.pdn_exp && `${post.pdn_years} years of PDN exp`}</span>
-                <span>{!!post.peds_exp  && `${post.peds_years} years of Peds exp`}</span>
-                <span>{!!post.epilepsy_exp  && `${post.epilepsy_years} of exp with epileptic patients`}</span>
-                <span>{!!post.lift_res  && `${post.lift_res_type} lift restrictions`}</span>
+                <span>{!!post[0].case_manage  && "Case Manage"}</span>
+                <span>{!!post[0].pdn_exp && `${post[0].pdn_years} years of PDN exp`}</span>
+                <span>{!!post[0].peds_exp  && `${post[0].peds_years} years of Peds exp`}</span>
+                <span>{!!post[0].epilepsy_exp  && `${post[0].epilepsy_years} of exp with epileptic patients`}</span>
+                <span>{!!post[0].lift_res  && `${post[0].lift_res_type} lift restrictions`}</span>
               </Card.Text>               
             </Card.Body>
 
@@ -85,7 +86,7 @@ const CurrentPosting = (props) => {
                   <Modal.Title>Edit Days</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <EditDays days={day} handleClose={handleClose} />
+                  {/* <EditDays days={day} handleClose={handleClose} /> */}
                 </Modal.Body>
                 <Modal.Footer>
                   
@@ -93,6 +94,7 @@ const CurrentPosting = (props) => {
               </Modal>
             </Card.Header>
             <Card.Body className="profile">
+             { day && day.length > 0 ?
               <Card.Text className="list">
                 <span>{!!day[0].sunday && "Sunday"}</span>
                 <span> {!!day[0].monday && "Monday"}</span>
@@ -100,21 +102,22 @@ const CurrentPosting = (props) => {
                 <span>{!!day[0].wednesday && "Wednesday"}</span>
                 <span> {!!day[0].thursday && "Thursday"}</span>
                 <span> {!!day[0].friday && "Friday"}</span>
-                <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>            
-            </Card.Body>
+                <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>    :null}        
+            </Card.Body>l 
 
             <Card.Header className="lightHeader">Shifts Available<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
               <Modal show={show.showShifts} onHide={handleClose}>
                 <Modal.Header >
                   <Modal.Title>Edit Shift</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><EditShift shift={shift} handleClose={handleClose}/></Modal.Body>
+                {/* <Modal.Body><EditShift shift={shift} handleClose={handleClose}/></Modal.Body> */}
                 <Modal.Footer>
                   
                 </Modal.Footer>
               </Modal>
             </Card.Header>
-            <Card.Body className="profile">                      
+            <Card.Body className="profile">            
+            {shift && shift.length > 0 ?           
               <Card.Text  className="list">
                 <span>{!!shift[0].am_8hr  && "8 hr AM"}</span>
                 <span >{!!shift[0].pm_8hr  && "8 hr PM"}</span>
@@ -122,8 +125,8 @@ const CurrentPosting = (props) => {
                 <span>{!!shift[0].am_10hr  && "10 hr AM"}</span>
                 <span >{!!shift[0].pm_10hr  && "10 hr PM"}</span>
                 <span >{!!shift[0].am_12hr  && "12 hr AM"}</span>
-                <span >{!!shift[0].noc_12hr  && "12 hr NOC"}</span>
-              </Card.Text>
+                <span >{!!shift[0].noc_12hr  && "12 hr NOC"}</span> 
+              </Card.Text> : null }
             </Card.Body>
           </Card>
                      :
@@ -131,7 +134,7 @@ const CurrentPosting = (props) => {
             <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>              
             <Card.Body>
               <Card.Text>You have no current postings</Card.Text>
-              <Link to={`/add-avail/${id}`}>Add New Post</Link>
+              <Link to={`/add-avail/${id}`} id={id}>Add New Post</Link>
             </Card.Body>
           </Card>
             } 

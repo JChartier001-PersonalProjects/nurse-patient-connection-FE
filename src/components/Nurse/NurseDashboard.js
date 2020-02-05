@@ -22,11 +22,15 @@ const NurseDashboard = (props) => {
       const id = parse.id
 
     useEffect(() => {
+        const token = localStorage.getItem('token')
+        const parse = JSON.parse(atob(token.split('.')[1]))
+        const id = parse.id
+       
         axiosWithAuth()
         .get(`api/nurse/${id}`)
         .then(response => {
+            console.log(response)
             setNurse(response.data);
-            localStorage.setItem("nurse_id", response.data[0].id)
         })
         .catch(error => {
             console.log(error);
@@ -82,7 +86,7 @@ const NurseDashboard = (props) => {
                             </Card.Body>
                         </Card>
                     </div>
-                    <CurrentPosting props={props}/>
+                    <CurrentPosting props={props} id={nurse.id}/>
                     </div>
                     {/* <input className='search' type="text" name="search" placeholder="Search"/> */}
                 </div>

@@ -3,7 +3,8 @@ import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import {Card, Button, Modal, Form, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import AddNeed from "../case_posting/AddNeed.js";
-import EditPostPatient from "./EditPatientInfo.js"
+import EditPostPatient from "./EditPostPatient.js";
+import EditDaysPatient from "./EditDaysPatient.js"
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
@@ -20,10 +21,10 @@ const CurrentPosting = (props) => {
     const handleClose = (name) => setShow({name: false});
     const handleShow = (e) => setShow({[e.target.name]:true});
     
-    
+    console.log(day, "needPost Days")
     useEffect(() => {
         const id = props.id
-        console.log(id, "patientID")
+        console.log(id, "id")
         axiosWithAuth()
         .get(`/api/case/${id}`)
         .then(response => {
@@ -88,7 +89,7 @@ console.log("post", post, "posting", posting)
                   <Modal.Title>Edit Days</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  {/* <EditDays days={day} handleClose={handleClose} /> */}
+                  <EditDaysPatient days={day} handleClose={handleClose} />
                 </Modal.Body>
                 <Modal.Footer>
                   

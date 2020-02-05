@@ -2,60 +2,63 @@ import React, {useState} from 'react';
 import {Form, Button} from "react-bootstrap";
 import axiosWithAuth from "../../../api/axiosWithAuth.js"
 
-const EditDays = (props) => {
+const EditDaysPatient = (props) => {
         const edit = props.days[0];
         const handleClose = props.handleClose
-    
+      
     const [days, setDays] = useState({
         id: edit.id,
-        nurse_id: edit.nurse_id,
+        pt_id: edit.pt_id,
         sunday: edit.sunday,
         monday: edit.monday,
         tuesday: edit.tuesday,
         wednesday: edit.wednesday,
         thursday: edit.thursday,
         friday: edit.friday,
-        saturday: edit.saturday
+        saturday: edit.saturday      
     });
 
-    const handleCheck = e => {
+    const handleCheck = e =>{
         const stringToBoolean = string => {
-            switch(string) {
-               case 'true': return true;
-               case 'false': return false;
-               default: return e.target.value;
-         }}
+            switch(string){
+                case "true": return 1;
+                case "false": return 0;
+                case true: return 1;
+                case false: return 0;
+                default: return string;
+            }    
+        }
         setDays({
             ...days,
             [e.target.name]: stringToBoolean(e.target.value)
         })
     }
+
     const handleSubmit = e => {
         e.preventDefault();
+        
+        console.log("days", days)
         axiosWithAuth()
-        .put('/api/avail/days', days)
+        .put('/api/case/days',   days)
         .then(response => {
-            console.log("update days",response)
-            setDays(response.data)
-            handleClose("showDays");
-            window.location.reload();
+            console.log(response)
         })
         .catch(error => {
-            console.log(error)
+            console.dir(error)
         })
     }
 
     const booleanToString = boolean => {
         switch(boolean){
-            case "true": return true;
-            case "false" : return false;
-            default: return boolean
+            case 1: return true;
+            case 2: return false;
+            default: return boolean;
         }
     }
-    
+ 
     return (
         <div className="edit">
-            <Form.Group className='days_avail'>
+            <Form.Group className='days_needed'>
                 <Form.Check type="checkbox" id="days" label="Sunday" name='sunday' value={!days.sunday} checked={booleanToString(days.sunday)} onChange={handleCheck}/>
                 <Form.Check type="checkbox" id='days' label="Monday" name='monday' value={!days.monday} checked={booleanToString(days.monday)} onChange={handleCheck} />
                 <Form.Check type="checkbox"  id='days' label="Tuesday" name='tuesday' value={!days.tuesday} checked={booleanToString(days.tuesday)} onChange={handleCheck} />
@@ -69,4 +72,4 @@ const EditDays = (props) => {
         </div>
 )
   }
-  export default EditDays;
+  export default EditDaysPatient;

@@ -10,6 +10,7 @@ const Register = (props) => {
         password: "",
         city: '',
         state: '',
+        county: '',
         role: ""
     });
 
@@ -43,7 +44,17 @@ const Register = (props) => {
         <div className="registerContainer">
             <Form onSubmit={handleSubmit}>
                 <h2>Create an Account!</h2>
-                <div className="registerForm" >                    
+                <div className="registerForm" >      
+                <Row>
+                        <Col xs={6}>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control className="input" type="email" name="email" placeholder="Enter email" onChange={handleInput}/>
+                        </Col>
+                        <Col xs={6}>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control className="input" type="password" name="password" placeholder="Password" onChange={handleInput} />
+                        </Col>
+                    </Row>              
                     <Row >
                         <Col xs={6}>
                             <Form.Label>First Name</Form.Label>
@@ -65,22 +76,19 @@ const Register = (props) => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs={6}>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control className="input" type="email" name="email" placeholder="Enter email" onChange={handleInput}/>
-                        </Col>
-                        <Col xs={6}>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control className="input" type="password" name="password" placeholder="Password" onChange={handleInput} />
-                        </Col>
-                    </Row>
                     <Col xs={6}>
+                        <Form.Label>County</Form.Label>
+                        <Form.Control className="input" type="text" name="county" placeholder="County" onChange={handleInput} />
+                        </Col>                   
+                    <Col xs={6}>
+                    <Form.Label>Please Select</Form.Label>
                     <Form.Control as="select" name="role" onChange={handleInput}>
                         <option value="select">Please Select One</option>
                         <option value="nurse">I am a Nurse</option>
                         <option value="patient">I am a Parent/Patient</option>      
                     </Form.Control> 
                     </Col>
+                    </Row>
                     <Button type="submit" variant="outline-info">Register</Button>   
                     </div>             
             </Form>

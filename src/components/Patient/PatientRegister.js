@@ -70,7 +70,7 @@ const PatientRegister = (props) => {
     console.log("patient", patient, "needs", needs)
 
     return(
-        <div className="patientRegister">     
+        <div className="register">     
             <div className="container">         
                 <Form.Label >Patient Age </Form.Label>  
                 <Form.Control type="text" name="age" onChange={handlePatient}/>                       

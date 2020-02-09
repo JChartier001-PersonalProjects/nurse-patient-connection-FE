@@ -4,6 +4,7 @@ import axiosWithAuth from "../../../api/axiosWithAuth.js";
 
 const EditPostPatient= (props) => {
     const edit= props.posting[0];
+    console.log("props", props)
     const handleClose = props.handleClose;
         console.log(edit)
     const [posting, setPosting] = useState({
@@ -33,7 +34,33 @@ const EditPostPatient= (props) => {
         develop_disabled: edit.develop_disabled
     })
 
-    const handleCheck = e => {
+    const [days, setDays] = useState({
+        id: props.day[0].id,
+        pt_id: props.day[0].pt_id,
+        sunday: props.day[0].sunday,
+        monday: props.day[0].monday,
+        tuesday: props.day[0].tuesday,
+        wednesday: props.day[0].wednesday,
+        thursday: props.day[0].thursday,
+        friday: props.day[0].friday,
+        saturday: props.day[0].saturday      
+    });
+
+    const [shift, setShift] = useState({
+        pt_id: props.shift[0].pt_id,
+        am_8hr: props.shift[0].am_8hr,
+        pm_8hr: props.shift[0].pm_8hr,
+        noc_8hr:  props.shift[0].noc_8hr,
+        am_10hr:  props.shift[0].am_10hr,
+        noc_10hr:  props.shift[0].noc_10hr,
+        am_12hr:  props.shift[0].am_12hr,
+        noc_12hr: props.shift[0].noc_12hr,
+        other: props.shift[0].other
+    });
+   
+    
+
+    const handlePostCheck = e => {
         const stringToBoolean = string => {
             switch(string) {
                case 'true': return 1;
@@ -42,6 +69,31 @@ const EditPostPatient= (props) => {
          }}
         setPosting({
             ...posting,
+            [e.target.name]: stringToBoolean(e.target.value)
+        })
+    }   
+    const handleDaysCheck = e => {
+        const stringToBoolean = string => {
+            switch(string) {
+               case 'true': return 1;
+               case 'false': return 0;
+               default: return e.target.value;
+         }}
+        setDays({
+            ...days,
+            [e.target.name]: stringToBoolean(e.target.value)
+        })
+    }   
+
+    const handleShiftCheck = e => {
+        const stringToBoolean = string => {
+            switch(string) {
+               case 'true': return 1;
+               case 'false': return 0;
+               default: return e.target.value;
+         }}
+        setShift({
+            ...shift,
             [e.target.name]: stringToBoolean(e.target.value)
         })
     }   
@@ -73,15 +125,16 @@ const EditPostPatient= (props) => {
     }
 
     const handleSubmit = e =>{
-        const id = posting.id
+        const id = posting.pt_id
         e.preventDefault();
         axiosWithAuth()
-        .put(`/api/case/${id}`, posting)
-        .then(response => {
-            axiosWithAuth()
-            .get(`/api/case/${id}`)
-            console.log("response", response)
-            setPosting(response.data)
+        .put(`/api/case/${id}`, {
+            posting:posting,
+        days: days,
+    shifts: shift
+})
+        .then(() => {
+           
             handleClose('showPosting')
             window.location.reload();
         })
@@ -98,9 +151,9 @@ const EditPostPatient= (props) => {
         }
     }
 
-  console.log(posting, needs)
+  console.log(posting, shift, days, posting.pt_id)
     return (
-        <div className="edit">
+        <div className="form-modal">
             <Form.Group>
                 <Form.Label >In need of a Case Manager?</Form.Label>
                 <Form.Control as="select"  name='case_manager' onChange={handleInput} defaultValue=''>                
@@ -158,7 +211,7 @@ const EditPostPatient= (props) => {
                 <Form.Control type="text" name="lift_weight" onChange={handleInput}/>  
             </Form.Group>
             <Form.Group>
-                <Form.Check type="checkbox" label="Attends School" name='school' value={!posting.school}  checked={booleanToString(posting.school)} onChange={handleCheck}/><br/>
+                <Form.Check type="checkbox" label="Attends School" name='school' value={!posting.school}  checked={booleanToString(posting.school)} onChange={handlePostCheck}/><br/>
                 <Form.Label className="input" >If yes, what time does the patient attend school?</Form.Label>
                 <Form.Control type="text" name="school_time" onChange={handleInput}/>
             </Form.Group>
@@ -175,7 +228,40 @@ const EditPostPatient= (props) => {
                 <Form.Check type="checkbox" label="Developmentally Delayed" name='develop_disabled'  value={!needs.develop_disabled}  checked={booleanToString(needs.develop_disabled)}  onChange={handleNeed}/>
                 <Form.Check type="checkbox" label="Verbal" name='verbal'  value={!needs.verbal}  checked={booleanToString(needs.verbal)}  onChange={handleNeed}/>
                 <Form.Check type="checkbox" label="Non-verbal" name='verbal'  value={!!needs.verbal}  checked={booleanToString(!needs.verbal)}  onChange={handleNeed}/>
-                <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
+               
+
+                <div className="edit">
+            <Form.Group className='days'>
+                <h4>Edit Days Nurse is Needed</h4>
+                <Form.Check type="checkbox" id="days" label="Sunday" name='sunday' value={!days.sunday} checked={booleanToString(days.sunday)} onChange={handleDaysCheck}/>
+                <Form.Check type="checkbox" id='days' label="Monday" name='monday' value={!days.monday} checked={booleanToString(days.monday)} onChange={handleDaysCheck} />
+                <Form.Check type="checkbox"  id='days' label="Tuesday" name='tuesday' value={!days.tuesday} checked={booleanToString(days.tuesday)} onChange={handleDaysCheck} />
+                <Form.Check type="checkbox" id='days' label="Wednesday" name='wednesday' value={!days.wednesday} checked={booleanToString(days.wednesday)} onChange={handleDaysCheck} />
+                <Form.Check type="checkbox"  id='days' label="Thursday" name='thursday' value={!days.thursday} checked={booleanToString(days.thursday)}  onChange={handleDaysCheck}/>
+                <Form.Check type="checkbox" id='days' label="Friday" name='friday' value={!days.friday} checked={booleanToString(days.friday)} onChange={handleDaysCheck} />
+                <Form.Check type="checkbox" id='days' label="Saturday" name='saturday' value={!days.saturday} checked={booleanToString(days.saturday)} onChange={handleDaysCheck} />
+            </Form.Group>
+          
+        </div>
+        <Form.Group className='shifts'>
+            <h4>Edit Shifts Nurse is Needed</h4>
+            <Form.Check type="checkbox" label="8 hr AM" name='am_8hr' value={!shift.am_8hr} checked={booleanToString(shift.am_8hr)} onChange={handleShiftCheck}/>
+                <Form.Check type="checkbox" label="8 hr PM" name='pm_8hr' value={!shift.pm_8hr}  checked={booleanToString(shift.pm_8hr)}onChange={handleShiftCheck}/>
+                <Form.Check type="checkbox" label="8 hr NOC" name='noc_8hr' value={!shift.noc_8hr}  checked={booleanToString(shift.noc_8hr)}onChange={handleShiftCheck} />
+                <Form.Check type="checkbox" label="10 hr AM" name='am_10hr' value={!shift.am_10hr} checked={booleanToString(shift.am_10hr)} onChange={handleShiftCheck} />
+                <Form.Check type="checkbox" label="10 hr NOC" name='noc_10hr' value={!shift.noc_10hr}  checked={booleanToString(shift.noc_10hr)} onChange={handleShiftCheck}/>
+                <Form.Check type="checkbox" label="12 hr AM" name='am_12hr' value={!shift.am_12hr} checked={booleanToString(shift.am_12hr)} onChange={handleShiftCheck} />
+                <Form.Check type="checkbox" label="12 hr NOC" name='noc_12hr' value={!shift.noc_12hr} checked={booleanToString(shift.noc_12hr)} onChange={handleShiftCheck}/>  
+                <div>
+                <Form.Label>Other</Form.Label>
+                <Form.Control type="text" name="other" onChange={handleInput}/>
+                </div>
+                </Form.Group>
+                <div className="buttons">
+                
+            <Button variant="outline-info" name="showDays" onClick={handleSubmit}>Save Changes</Button>
+            <Button variant="outline-info" name="showDays" onClick={handleClose}>Close</Button>
+            </div>
         </div>
 
     )

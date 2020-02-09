@@ -3,8 +3,9 @@ import axiosWithAuth from "../../../api/axiosWithAuth.js";
 import { Form, Row, Col, Button } from 'react-bootstrap';
 
 
-const Add_Avail = (props) => {
-    const id = props.match.params.id    
+const AddNew = (props) => {
+    console.log(props)
+    const id = props.id
     const [posting, setPosting] = useState({});       
     const [days, setDays] = useState({
         sunday: 0,
@@ -85,13 +86,11 @@ const Add_Avail = (props) => {
     }
     
     return(        
-        <div className="addAvail">
-        <h2>Add Availability</h2>
-        <p>Please check options below</p>
-            <Form.Group >
-                
-                <div className="left">
-                    <Col xs={12}>
+        <div className="form-modal">       
+        <p>Please check options below</p>               
+               
+                 <Form.Group>
+                     <Col xs={8}>
                         <Form.Check type="checkbox" label="Experience with Pediatric Patients" name='peds_exp' value={!posting.peds_exp} onChange={handlePost}/>
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='peds_years' defaultValue='' onChange={handlePost}>  
@@ -103,8 +102,11 @@ const Add_Avail = (props) => {
                             <option value="4">4</option>
                             <option value="5+">5+</option>
                         </Form.Control> 
-                    </Col>
-                    <Col xs={12}>
+                        </Col>
+                        </Form.Group>
+                        <Form.Group>
+
+                    <Col xs={8}>
                         <Form.Check type="checkbox" label="PDN/Home Health Experience?" name='pdn_exp' value={!posting.pdc_exp} onChange={handlePost} />
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='pdn_years'  defaultValue='' onChange={handlePost}>  
@@ -117,7 +119,9 @@ const Add_Avail = (props) => {
                             <option value="5+">5+</option>                  
                         </Form.Control>                 
                     </Col>
-                    <Col xs={12}>
+                    </Form.Group>
+                        <Form.Group>
+                   <Col xs={8}>
                         <Form.Check type="checkbox" label="Experience with Epileptic Patients" name='epilepsy_exp' value={!posting.epilepsy_exp} onChange={handlePost} />
                         <Form.Label >How Many Years</Form.Label>
                         <Form.Control as="select" name='epilepsy_years'  defaultValue='' onChange={handlePost}> 
@@ -129,28 +133,26 @@ const Add_Avail = (props) => {
                             <option value="4">4</option>
                             <option value="5+">5+</option>                  
                         </Form.Control> 
-                    </Col>
-                </div>
-                <div className="right">
-                    <Col xs={12}>                        
-                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
-                    </Col>
-                    <Col xs={12}>
-                                        
-                    </Col>
+                        </Col>
+                        </Form.Group>
                    
-                    <Col xs={12}>
+                        <Form.Group>
+                        </Form.Group>
+                        <Form.Group>
+                                       
+                        <Form.Check type="checkbox" label="Willing to Case Manage?" name='case_manage' value={!posting.case_manage} onChange={handlePost} />
+                   
                         <Form.Check type="checkbox" label="Do you smoke/vape?" name='smoke' value={!posting.smoke} onChange={handlePost}/>
-                    </Col>
-                    <Col xs={12}>
+                 
+                    
                         <Form.Check type="checkbox" label="Any lift restrictions" name='list_res' value={!posting.lift_res} onChange={handlePost}/>
                         <Form.Label>Type of Lift Restrictions</Form.Label>
                         <Form.Control type="text" name='list_res_type' onChange={handlePost}/> 
-                    </Col>
-                </div>
+                    
+                
             </Form.Group>
                 <p className='days'>Days Available</p>
-            <Form.Group className='days_avail'>
+            <Form.Group className='days'>
                 <Form.Check type="checkbox" id="days" label="Sunday" name='sunday' value={!days.sunday} onChange={handleDays}/>
                 <Form.Check type="checkbox" id='days' label="Monday" name='monday' value={!days.monday} onChange={handleDays} />
                 <Form.Check type="checkbox"  id='days' label="Tuesday" name='tuesday' value={!days.tuesday} onChange={handleDays} />
@@ -159,8 +161,8 @@ const Add_Avail = (props) => {
                 <Form.Check type="checkbox" id='days' label="Friday" name='friday' value={!days.friday} onChange={handleDays} />
                 <Form.Check type="checkbox" id='days' label="Saturday" name='saturday' value={!days.saturday} onChange={handleDays} />
             </Form.Group>
-                <p className='days'>Shifts Available</p>
-            <Form.Group className='shifts_avail'>
+                <p className='shifts'>Shifts Available</p>
+            <Form.Group className='shifts'>
                 <Form.Check type="checkbox" label="8 hr AM" name='am_8hr' value={!shifts.am_8hr} onChange={handleShifts}/>
                 <Form.Check type="checkbox" label="8 hr PM" name='pm_8hr' value={!shifts.pm_8hr} onChange={handleShifts}/>
                 <Form.Check type="checkbox" label="8 hr NOC" name='noc_8hr' value={!days.noc_8hr} onChange={handleShifts} />
@@ -182,4 +184,4 @@ const Add_Avail = (props) => {
 
 
 
-export default Add_Avail;
+export default AddNew;

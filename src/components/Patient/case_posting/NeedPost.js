@@ -4,7 +4,6 @@ import {Card, Button, Modal, Form, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import AddNeed from "../case_posting/AddNeed.js";
 import EditPostPatient from "./EditPostPatient.js";
-import EditDaysPatient from "./EditDaysPatient.js"
 
 const CurrentPosting = (props) => {
     const [posting, setPosting] = useState([]);
@@ -28,7 +27,6 @@ const CurrentPosting = (props) => {
         axiosWithAuth()
         .get(`/api/case/${id}`)
         .then(response => {
-            console.log(response);
             setPosting(response.data)
         })
         .catch(error => {
@@ -53,20 +51,20 @@ console.log("post", post, "posting", posting)
         <div  className="post">
         {post && post.length !==0 ? 
           <Card border="info" style={{ width: "fit-content"}}>
-            <Card.Header>Current Postings<Button variant="outline-info" onClick={handleDelete}>Delete</Button></Card.Header> 
-              <Card.Header className="lightHeader">About Patient
-                <Button variant="outline-info" name="showPosting" onClick={handleShow}>Edit</Button>
+            <Card.Header>Current Postings <Button variant="outline-info" name="showPosting" onClick={handleShow}>Edit</Button>
                   <Modal show={show.showPosting} onHide={handleClose} >
                     <Modal.Header>
                       <Modal.Title>Edit Post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                      <EditPostPatient   posting={[post]}  handleClose={handleClose}/>
+                      <EditPostPatient   posting={[post]} shift={shift} day={day}  handleClose={handleClose}/>
                     </Modal.Body>
                     <Modal.Footer>
                       
                     </Modal.Footer>
-                  </Modal>
+                  </Modal><Button variant="outline-info" onClick={handleDelete}>Delete</Button></Card.Header> 
+              <Card.Header className="lightHeader">About Patient
+               
               </Card.Header>
             <Card.Body  className="profile">
               <Card.Text  className="list">
@@ -82,20 +80,7 @@ console.log("post", post, "posting", posting)
             </Card.Body>
 
 
-            <Card.Header className="lightHeader">Days Needed
-            <Button variant="outline-info" name="showDays" onClick={handleShow}>Edit</Button>
-              <Modal show={show.showDays} name="showDays" >
-                <Modal.Header>
-                  <Modal.Title>Edit Days</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <EditDaysPatient days={day} handleClose={handleClose} />
-                </Modal.Body>
-                <Modal.Footer>
-                  
-                </Modal.Footer>
-              </Modal>
-            </Card.Header>
+            <Card.Header className="lightHeader">Days Needed</Card.Header>
             <Card.Body className="profile">
               <Card.Text className="list"> 
                 <span>{!!day[0].sunday && "Sunday"}</span>
@@ -107,17 +92,7 @@ console.log("post", post, "posting", posting)
                 <span>{!!day[0].saturday && "Saturday"}</span></Card.Text>
             </Card.Body>
 
-            <Card.Header className="lightHeader">Shifts Needed<Button variant="outline-info" name="showShifts" onClick={handleShow}>Edit</Button>  
-              <Modal show={show.showShifts} onHide={handleClose}>
-                <Modal.Header >
-                  <Modal.Title>Edit Shift</Modal.Title>
-                </Modal.Header>
-                {/* <Modal.Body><EditShift shift={shift} handleClose={handleClose}/></Modal.Body> */}
-                <Modal.Footer>
-                  
-                </Modal.Footer>
-              </Modal>
-            </Card.Header>
+            <Card.Header className="lightHeader">Shifts Needed</Card.Header>
             <Card.Body className="profile">                      
               <Card.Text  className="list">
                 <span>{!!shift[0].am_8hr  && "8 hr AM"}</span>
@@ -130,6 +105,7 @@ console.log("post", post, "posting", posting)
               </Card.Text>
             </Card.Body>
           </Card>
+          
                      :
           <Card className="noPost" border="info" style={{ width: "23rem"}}>       
             <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>              

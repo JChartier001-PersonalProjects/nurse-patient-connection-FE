@@ -41,27 +41,34 @@ body{
             font-size: 1.4rem;
         }
     }
-   .registerContainer{
-       margin-top: -150px;
-       width:550px;              
-       .form();   
-       h1{
-            text-align: center;
-       } 
-       .registerForm{
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-       .form-group, .form-control, .form-label {
-            margin: 5px 10px;
-            font-size: 1.4rem;
-       }
-       .btn{
-           margin: 10px;
-           width: 20%;
-       }
+   
+    .registerContainer{
+        .form();
+        width: 50%;
+        .registerForm, form{
+            width: 100%;
+            font-size: 1.5rem;
+            .row{
+                margin: 2%;
+                .form-label, input{
+                    margin: 1%;
+                }
+            }
+            input, select{
+                font-size: 1.4rem;
+            }
+            .btn{
+                width: 20%;
+                margin: 0 40%;
+                font-size: 1.4rem;
+            }
+        }
+       
     }
-   }
+    .post .btn {
+        font-size: 1.5rem;
+        border: none;
+    }
 .loginContainer{
     // margin-top: 200px;    
     // width: 60%;

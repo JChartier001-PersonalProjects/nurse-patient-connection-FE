@@ -37,7 +37,7 @@ const PatientDashboard = () => {
 
 return(
    
-    <div className="patientDash">      
+    <div >      
            <div className="key" >
       {patient && patient.length > 0 ? patient.map( patient => {
             return(

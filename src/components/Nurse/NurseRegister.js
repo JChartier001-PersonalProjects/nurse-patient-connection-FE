@@ -40,41 +40,34 @@ const NurseRegister = (props) => {
     console.log(nurse)
 
     return(
-        <div className="nurseRegister">
+        <div className="registerContainer">
                 <h2>Additional Nurse Info</h2>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Row className="license">
-                        <Col xs={6}>
+                
+                <Form.Group controlId="exampleForm.ControlSelect1" className="registerForm">
+                <Row>
                             <Form.Label >License Type:</Form.Label>
-                        </Col>
-                        <Col xs={8}>
                             <Form.Control as="select" name='license_type' onChange={handleInput} defaultValue=''>
                                 <option value='' disabled hidden>Please Select</option>
                                 <option value="RN">RN</option>
                                 <option value="LPN">LPN</option>
                             </Form.Control>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
+                            </Row>
+                            <Row>
                             <Form.Label >Current Pediatric Vent Certification:</Form.Label>
                                 <Form.Control as="select" name='rsc_child' onChange={handleInput} defaultValue=''>
                                 <option value='' disabled hidden>Please Select</option>
                                 <option value={true} >Yes</option>
                                 <option value={false}>No</option>
                             </Form.Control>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
+                            </Row>
+                            <Row>
                             <Form.Label >Current Adult Vent Certification:</Form.Label>
                             <Form.Control as="select" name='rsc_adult' onChange={handleInput} defaultValue=''>
                                 <option value='' disabled hidden>Please Select</option>
                                 <option value={true} >Yes</option>
                                 <option value={false}>No</option>
                             </Form.Control>  
-                        </Col>   
-                    </Row>
+                            </Row>
                     <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
                 </Form.Group>
             

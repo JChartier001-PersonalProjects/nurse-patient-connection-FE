@@ -40,7 +40,7 @@ const CurrentPosting = (props) => {
 
     const handleDelete = e =>{
         e.preventDefault();
-        const id = post[0].nurse_id
+        const id = post[0].id
         axiosWithAuth()
         .delete(`/api/avail/${id}`)
         .then(() => {

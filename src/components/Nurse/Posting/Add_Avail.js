@@ -81,7 +81,7 @@ const AddNew = (props) => {
             
         )
         .then(response => {
-            (props.history.push('/dashboard'))
+            (props.history.push('https://priceless-euclid-6c7ea0.netlify.com/dashboard'))
         })
         .catch(error => {
             console.log(error)

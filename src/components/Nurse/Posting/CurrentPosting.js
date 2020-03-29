@@ -43,8 +43,17 @@ const CurrentPosting = (props) => {
         axiosWithAuth()
         .delete(`/api/avail/${id}`)
         .then(() => {
-            window.location.reload()
-        })
+          axiosWithAuth()
+          .get(`/api/avail/${id}`)
+          .then(response => {
+              console.log(response);
+              setPosting(response.data)
+          })
+          .catch(error => {
+              console.log(error)
+          })
+      }, [props.id])
+        
         .catch(error => {
             console.log(error)
         })

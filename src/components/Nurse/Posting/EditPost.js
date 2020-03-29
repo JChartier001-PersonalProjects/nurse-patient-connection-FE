@@ -110,7 +110,6 @@ const EditPost = (props) => {
         .then(response => {
             console.log("response", response)
             handleClose('showPosting')
-            window.location.reload();
         })
         .catch(error => {
             console.log(error)

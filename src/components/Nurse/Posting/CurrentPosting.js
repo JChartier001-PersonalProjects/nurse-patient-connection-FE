@@ -26,7 +26,7 @@ const CurrentPosting = (props) => {
     const handleShow = (e) => setShow({[e.target.name]:true});
     
     
-    useEffect(() => {
+    useEffect((props) => {
         axiosWithAuth()
         .get(`/api/avail/${id}`)
         .then(response => {
@@ -44,6 +44,7 @@ const CurrentPosting = (props) => {
         axiosWithAuth()
         .delete(`/api/avail/${id}`)
         .then(() => {
+          const id = props.nurse.id
           axiosWithAuth()
           .get(`/api/avail/${id}`)
           .then(response => {

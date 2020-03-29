@@ -26,7 +26,7 @@ const CurrentPosting = (props) => {
     const handleShow = (e) => setShow({[e.target.name]:true});
     
     
-    useEffect((props) => {
+    useEffect(() => {
         axiosWithAuth()
         .get(`/api/avail/${id}`)
         .then(response => {
@@ -40,22 +40,12 @@ const CurrentPosting = (props) => {
 
     const handleDelete = e =>{
         e.preventDefault();
-        const id = posting[0].id
         axiosWithAuth()
         .delete(`/api/avail/${id}`)
         .then(() => {
-          const id = props.nurse.id
-          axiosWithAuth()
-          .get(`/api/avail/${id}`)
-          .then(response => {
-              console.log(response);
-              setPosting(response.data)
-          })
-          .catch(error => {
-              console.log(error)
-          })
-      }, [props.id])
-        
+          window.location.reload();
+          setPosting([]);
+        })
         .catch(error => {
             console.log(error)
         })

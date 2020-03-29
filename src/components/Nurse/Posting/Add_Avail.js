@@ -4,9 +4,9 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 
 
 const AddNew = (props) => {
-    console.log(props)
+    // console.log(props)
     const id = props.props.nurse.id
-    console.log(id)
+    // console.log(id)
     const [posting, setPosting] = useState({});    
     const handleClose = props.handleClose
        
@@ -81,7 +81,8 @@ const AddNew = (props) => {
             
         )
         .then(response => {
-            (props.history.push('https://priceless-euclid-6c7ea0.netlify.com/dashboard'))
+            console.log(response);
+            window.location.reload();
         })
         .catch(error => {
             console.log(error)

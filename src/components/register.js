@@ -26,7 +26,7 @@ const Register = (props) => {
         
         e.preventDefault();       
         axios
-        .post('https://connections-p-n.herokuapp.com/api/auth/register', user)
+        .post('https:connections-p-n.herokuapp.com/api/auth/register', user)
         .then(response => {   
             localStorage.setItem('token', response.data.token)
             const token = localStorage.getItem('token')
@@ -48,7 +48,7 @@ const Register = (props) => {
                 <Row>
                         <Col xs={6}>
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control className="input" type="email" name="email" placeholder="Enter email" onChange={handleInput}/>
+                        <Form.Control className="input"  type="email" name="email" placeholder="Enter email" onChange={handleInput}/>
                         </Col>
                         <Col xs={6}>
                         <Form.Label>Password</Form.Label>

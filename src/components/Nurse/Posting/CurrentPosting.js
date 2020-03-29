@@ -14,6 +14,7 @@ const CurrentPosting = (props) => {
     const id = props.nurse.id
     console.log("props", props, id)
     console.log("posting",posting, shift, day)
+    console.log(post, "post")
   
 
     const [show, setShow] = useState({

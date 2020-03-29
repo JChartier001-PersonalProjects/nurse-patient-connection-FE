@@ -20,9 +20,9 @@ const Nav = (props) => {
     return (
         <div className="header">
             <Button variant="outline-info"><Link to="/">Home</Link></Button>
-            <Button variant="outline-info"><Link to="/login">Login</Link></Button>
+           
            {signedIn &&<Button variant="outline-info"><Link to="/dashboard">Dashboard</Link></Button>}           
-           {signedIn && <Button variant="outline-info" onClick={handleLogout}>Logout</Button>}
+           {signedIn ? <Button variant="outline-info" onClick={handleLogout}>Logout</Button>: <Button variant="outline-info"><Link to="/login">Login</Link></Button>}
         </div>
 
     )

@@ -110,7 +110,7 @@ const CurrentPosting = (props) => {
           </Card>
                      :
           <Card className="noPost" border="info" style={{ width: "fit-content"}}>       
-            <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>              
+            <Card.Header>Current Postings</Card.Header>              
             <Card.Body>
               <Card.Text>You have no current postings</Card.Text>
               <Button variant="outline-info" name="showPosting" onClick={handleShow}>Add New Availability</Button>

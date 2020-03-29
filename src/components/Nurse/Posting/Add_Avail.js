@@ -5,7 +5,8 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 
 const AddNew = (props) => {
     console.log(props)
-    const id = props.id
+    const id = props.props.nurse.id
+    console.log(id)
     const [posting, setPosting] = useState({});    
     const handleClose = props.handleClose
        

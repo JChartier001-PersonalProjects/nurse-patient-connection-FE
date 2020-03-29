@@ -11,7 +11,7 @@ const CurrentPosting = (props) => {
     const post = posting.posting; 
     const shift = posting.shifts;
     const day = posting.days; 
-    const id = props.id
+    const id = props.nurse.id
     console.log("props", props, id)
     console.log("posting",posting, shift, day)
   
@@ -113,10 +113,10 @@ const CurrentPosting = (props) => {
             <Card.Header>Current Postings<Link to="/delete-post"><Button variant="outline-info">Delete</Button></Link></Card.Header>              
             <Card.Body>
               <Card.Text>You have no current postings</Card.Text>
-              <Button variant="outline-info" name="showPosting" onClick={handleShow}>Add New Post</Button>
+              <Button variant="outline-info" name="showPosting" onClick={handleShow}>Add New Availability</Button>
                   <Modal show={show.showPosting} onHide={handleClose} >
                     <Modal.Header>
-                      <Modal.Title>Add New Post</Modal.Title>
+                      <Modal.Title>Add Availability</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
                       <AddNew props={props} posting={post} days={day} shifts={shift}handleClose={handleClose}/>

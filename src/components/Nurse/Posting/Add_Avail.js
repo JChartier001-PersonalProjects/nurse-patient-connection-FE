@@ -6,7 +6,9 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 const AddNew = (props) => {
     console.log(props)
     const id = props.id
-    const [posting, setPosting] = useState({});       
+    const [posting, setPosting] = useState({});    
+    const handleClose = props.handleClose
+       
     const [days, setDays] = useState({
         sunday: 0,
         monday: 0,
@@ -175,7 +177,8 @@ const AddNew = (props) => {
                 <Form.Control type="text" name="other" onChange={handleShifts}/>
                 </div>
             </Form.Group>
-        <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>          
+            <Button variant="outline-info" name="showShifts" onClick={handleClose}>Close</Button>
+            <Button variant="outline-info" name="showShifts" onClick={handleSubmit}>Save Changes</Button>         
         </div>
     )
     

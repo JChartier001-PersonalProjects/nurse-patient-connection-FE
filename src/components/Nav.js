@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
-import {Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
+
+
 
 const Nav = (props) => {
     const signedIn = localStorage.getItem('token');
@@ -17,7 +19,9 @@ const Nav = (props) => {
         
     return (
         <div className="header">
-            <Button variant="outline-info">Home</Button>
+            <Button variant="outline-info"><Link to="/">Home</Link></Button>
+            <Button variant="outline-info"><Link to="/register">Register</Link></Button>
+            <Button variant="outline-info"><Link to="/login">Login</Link></Button>
            {signedIn && <Button variant="outline-info" onClick={handleLogout}>Logout</Button>}
         </div>
 

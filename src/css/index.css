@@ -304,13 +304,6 @@ body {
   width: 100%;
   font-size: 1.4rem;
 }
-.App .dash {
-  display: flex;
-}
-.App .dash h3 {
-  text-align: center;
-  font-size: 3rem;
-}
 .register {
   display: flex;
   flex-flow: column nowrap;
@@ -454,6 +447,13 @@ h4 {
 .shifts .shifts {
   display: flex;
   flex-flow: wrap;
+}
+.dash {
+  display: flex;
+}
+.dash h3 {
+  text-align: center;
+  font-size: 3rem;
 }
 .modal-content {
   display: flex;

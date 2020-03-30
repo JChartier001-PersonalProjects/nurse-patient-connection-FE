@@ -26,7 +26,7 @@ const Register = (props) => {
         
         e.preventDefault();       
         axios
-        .post('http://localhost:4000/api/auth/register', user)
+        .post('api/auth/register', user)
         .then(response => {   
             localStorage.setItem('token', response.data.token)
             const token = localStorage.getItem('token')

@@ -27,7 +27,7 @@ const NurseDashboard = (props) => {
         const id = parse.id
        
         axiosWithAuth()
-        .get(`http://localhost:4000/api/nurse/${id}`)
+        .get(`api/nurse/${id}`)
         .then(response => {
             console.log(response)
             setNurse(response.data);

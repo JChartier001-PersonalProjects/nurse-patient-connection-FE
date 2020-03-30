@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axiosWithAuth from "../../api/axiosWithAuth.js";
-import {Button, Form, Row, Col} from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 
 const PatientRegister = (props) => {
     
@@ -47,9 +47,9 @@ const PatientRegister = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post('http://localhost:4000/api/patient', patient)
+            .post('"api/patient', patient)
             .then(response => {
-            console.log(response.data[0].id);
+            console.log(response.data.id);
             setPatient(response.data)
             // const pt_id =response.data[0].id
               axiosWithAuth()

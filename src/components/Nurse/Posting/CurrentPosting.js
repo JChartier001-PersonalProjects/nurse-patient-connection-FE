@@ -34,7 +34,7 @@ const CurrentPosting = (props) => {
     
     useEffect(() => {
         axiosWithAuth()
-        .get(`http://localhost:4000/api/avail/${id}`)
+        .get(`api/avail/${id}`)
         .then(response => {
             console.log(response);
             setPosting(response.data)

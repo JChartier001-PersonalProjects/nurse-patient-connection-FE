@@ -102,7 +102,7 @@ const EditPost = (props) => {
     const handleSubmit = e =>{
         e.preventDefault();
         axiosWithAuth()
-        .put(`http://localhost:4000/api/avail/${posting.id}`, {
+        .put(`api/avail/${posting.id}`, {
             posting: posting,
             days: days,
             shifts:shifts

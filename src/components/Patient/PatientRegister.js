@@ -47,7 +47,7 @@ const PatientRegister = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post('"api/patient', patient)
+            .post('api/patient', patient)
             .then(response => {
             console.log(response.data.id);
             setPatient(response.data)

@@ -49,7 +49,7 @@ const PatientRegister = (props) => {
         axiosWithAuth()
             .post('http://localhost:4000/api/patient', patient)
             .then(response => {
-            console.log("post patient register', response.data.id);
+            console.log("post patient register", response.data.id);
             setPatient(response.data)
             // const pt_id =response.data[0].id
               axiosWithAuth()

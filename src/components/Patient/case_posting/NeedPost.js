@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axiosWithAuth from "../../../api/axiosWithAuth.js";
-import {Card, Button, Modal, Form, Col, Row} from "react-bootstrap";
+import {Card, Button, Modal} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import AddNeed from "../case_posting/AddNeed.js";
 import EditPostPatient from "./EditPostPatient.js";

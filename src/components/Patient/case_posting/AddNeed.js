@@ -7,7 +7,7 @@ const AddNeed = (props) => {
     
     const [posting, setPosting] = useState({
         pt_id: props.id,
-        need_id: props.need[0].id,
+        need_id: props.need.id,
         smoke: false,
         case_manager: false,       
         lift_req: false,

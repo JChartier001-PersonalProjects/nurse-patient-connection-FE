@@ -27,7 +27,7 @@ const NurseDashboard = (props) => {
         const id = parse.id
        
         axiosWithAuth()
-        .get(`api/nurse/${id}`)
+        .get(`http://localhost:4000/api/nurse/${id}`)
         .then(response => {
             console.log(response)
             setNurse(response.data);
@@ -41,10 +41,8 @@ const NurseDashboard = (props) => {
         <div>
             <div className="key">
         {nurse && nurse.length > 0 ? 
-        nurse.map(nurse => {
-            return(
                 <>                
-                     <h3>Welcome {nurse.first_name}</h3>
+                     <h3>Welcome {nurse[0].first_name}</h3>
                     <div className="container">
                         <div className="accountInfo">
                                  {/* <p>Looking for a new case? <Link to ="/search">Click Here</Link></p> */}
@@ -60,10 +58,10 @@ const NurseDashboard = (props) => {
                   </Modal></Card.Header>
                             <Card.Body >
                                 <Card.Text className="list">
-                                    <span>{nurse.first_name} {nurse.last_name}</span>
-                                    <span>{nurse.email}</span>
-                                    <span>{nurse.city}, {nurse.state}</span>       
-                                    <span>{nurse.county}</span>                             
+                                    <span>{nurse[0].first_name} {nurse.last_name}</span>
+                                    <span>{nurse[0].email}</span>
+                                    <span>{nurse[0].city}, {nurse[0].state}</span>       
+                                    <span>{nurse[0].county}</span>                             
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -81,21 +79,17 @@ const NurseDashboard = (props) => {
                     
                             <Card.Body >
                                 <Card.Text className="list">
-                                    <span>License Type: {nurse.license_type}</span>
-                                    <span>Ped Vent Cert: {nurse.rsc_child === 1 ? "Yes" : "No"}</span>
-                                    <span> Adult Vent Cert: {nurse.rsc_adult === 1 ? "Yes" : "No"}</span>
+                                    <span>License Type: {nurse[0].license_type}</span>
+                                    <span>Ped Vent Cert: {nurse[0].rsc_child === 1 ? "Yes" : "No"}</span>
+                                    <span> Adult Vent Cert: {nurse[0].rsc_adult === 1 ? "Yes" : "No"}</span>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
                     </div>
-                    <CurrentPosting nurse={nurse} />
+                    <CurrentPosting nurse={nurse[0]} />
                     </div>
                    </>
-               
-                
-         )})
-        : null
-        
+        : null        
         }
         </div>
          </div>

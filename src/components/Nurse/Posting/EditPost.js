@@ -102,7 +102,7 @@ const EditPost = (props) => {
     const handleSubmit = e =>{
         e.preventDefault();
         axiosWithAuth()
-        .put(`/api/avail/${posting.id}`, {
+        .put(`http://localhost:4000/api/avail/${posting.id}`, {
             posting: posting,
             days: days,
             shifts:shifts
@@ -110,6 +110,17 @@ const EditPost = (props) => {
         .then(response => {
             console.log("response", response)
             handleClose('showPosting')
+            // const id = edit.nurse_id;
+            // axiosWithAuth()
+            // .get(`http://localhost:4000/api/avail/${id}`)
+            // .then(response => {
+            //     console.log(response);
+            //     setPosting(response.data)
+            // })
+            // .catch(error => {
+            //     console.log(error)
+            // })
+      
         })
         .catch(error => {
             console.log(error)
@@ -131,8 +142,8 @@ const EditPost = (props) => {
         })
     }
     console.log('shifts', shift)
-
-  console.log(posting)
+console.log('days', days)
+  console.log("posting", posting)
     return (
         <div className="edit">
             <Form.Check  type="checkbox" label="Willing to Case Manage?"  name='case_manage'  value={!posting.case_manage}  checked={booleanToString(posting.case_manage)} onChange={handlePostCheck} />
@@ -169,7 +180,7 @@ const EditPost = (props) => {
                 <option value="4">4</option>
                 <option value="5+">5+</option>                  
                 </Form.Control> 
-                <Form.Check type="checkbox" label="Any lift restrictions" name='list_res'  value={!posting.lift_res} checked={booleanToString(posting.lift_res)} onChange={handlePostCheck}/>
+                <Form.Check type="checkbox" label="Any lift restrictions" name='lift_res'  value={!posting.lift_res} checked={booleanToString(posting.lift_res)} onChange={handlePostCheck}/>
                 <Form.Label>Type of Lift Restrictions</Form.Label>
                 <Form.Control type="text" name='list_res_type' onChange={handlePost}/>
                 <Form.Check type="checkbox" label="Do you have pets?" name='pets'  value={!posting.pets} checked={booleanToString(posting.pets)} onChange={handlePostCheck} />   
@@ -203,8 +214,8 @@ const EditPost = (props) => {
                 <Form.Control type="text" name="other" onChange={handleInput}/>
                 </div>
             </Form.Group>
-            <Button variant="outline-info" name="showShifts" onClick={handleClose}>Close</Button>
             <Button variant="outline-info" name="showShifts" onClick={handleSubmit}>Save Changes</Button>
+            <Button variant="outline-info" name="showShifts" onClick={handleClose}>Close</Button>
             
     </div>
 

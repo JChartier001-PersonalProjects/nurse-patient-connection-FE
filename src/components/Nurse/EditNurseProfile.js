@@ -68,7 +68,8 @@ console.log("props", props)
             <option value={false}>No</option>
         </Form.Control>  
         
-        <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit} name={"showProfile"} variant="outline-info">Save Changes</Button>   
+<Button variant="outline-info" name="showShifts" onClick={handleClose}>Close</Button>
         </Form.Group>
 
 )

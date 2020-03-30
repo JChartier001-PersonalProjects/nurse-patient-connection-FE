@@ -455,3 +455,26 @@ h4 {
   display: flex;
   flex-flow: wrap;
 }
+.modal-content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid #17a2b8;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px 2px #17a2b8;
+  padding: 2%;
+  background-color: #F5F5F5;
+}
+.modal-content input,
+.modal-content select {
+  border: 1px solid lightslategray;
+}
+.modal-content .modal-body {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.modal-content .modal-body .btn {
+  font-size: 1.4rem;
+  margin: 10px  20px 0 0;
+}

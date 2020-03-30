@@ -63,7 +63,8 @@ console.log("props", props)
     <Form.Control className="input" type="email" name="email" placeholder={nurse.email}  onChange={handleInput}/>
    
 
-<Button onClick={handleSubmit} name={"showProfile"} variant="outline-info">Register</Button>   
+<Button onClick={handleSubmit} name={"showProfile"} variant="outline-info">Save Changes</Button>   
+<Button variant="outline-info" name="showShifts" onClick={handleClose}>Close</Button>
 </div>
 
 )

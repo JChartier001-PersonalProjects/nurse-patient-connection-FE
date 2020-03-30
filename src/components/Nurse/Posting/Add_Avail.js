@@ -76,7 +76,7 @@ const AddNew = (props) => {
         console.log(token)
         e.preventDefault();
         axiosWithAuth()
-        .post(`/api/avail`, 
+        .post(`http://localhost:4000/api/avail`, 
             {posting: posting, days : days, shifts: shifts}
             
         )

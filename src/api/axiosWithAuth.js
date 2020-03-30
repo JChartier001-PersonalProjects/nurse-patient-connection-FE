@@ -6,7 +6,8 @@ export function getToken() {
 
 export default function(){
     return axios.create({
-        baseURL: "https://connections-p-n.herokuapp.com/",
+        // baseURL: "'http://localhost:4000/",
+        // "https://connections-p-n.herokuapp.com/",
         headers: {
             Authorization: getToken()
         }

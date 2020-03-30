@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axiosWithAuth from '../../api/axiosWithAuth';
 import {Form, Button, Row, Col} from "react-bootstrap";
+import axios from "axios";
 
 const NurseRegister = (props) => {
     const token = localStorage.getItem('token')
@@ -31,7 +32,7 @@ const NurseRegister = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('/api/nurse', nurse)
+        .post('http://localhost:4000/api/nurse', nurse)
         .then(response => {
             console.log(response);
             props.history.push('dashboard');            

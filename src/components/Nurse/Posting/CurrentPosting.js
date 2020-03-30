@@ -7,14 +7,20 @@ import AddNew from "./Add_Avail.js"
 
 
 const CurrentPosting = (props) => {
-    const [posting, setPosting] = useState([]);
-    const post = posting.posting; 
+    const [posting, setPosting] = useState(
+    {
+      posting: {},
+      days: {},
+      shifts: {}
+    }
+    );
+     const post = posting.posting;
     const shift = posting.shifts;
     const day = posting.days; 
     const id = props.nurse.id
     console.log("props", props, id)
     console.log("posting",posting, shift, day)
-    console.log(post, "post")
+    console.log(post[0], "post")
   
 
     const [show, setShow] = useState({
@@ -28,7 +34,7 @@ const CurrentPosting = (props) => {
     
     useEffect(() => {
         axiosWithAuth()
-        .get(`/api/avail/${id}`)
+        .get(`http://localhost:4000/api/avail/${id}`)
         .then(response => {
             console.log(response);
             setPosting(response.data)
@@ -41,7 +47,7 @@ const CurrentPosting = (props) => {
     const handleDelete = e =>{
         e.preventDefault();
         axiosWithAuth()
-        .delete(`/api/avail/${id}`)
+        .delete(`http://localhost:4000/api/avail/${id}`)
         .then(() => {
           window.location.reload();
           setPosting([]);
@@ -53,7 +59,7 @@ const CurrentPosting = (props) => {
 
     return (
         <div  className="post">
-        {post && post.length !==0 ? 
+        {post && post.length >  0 ? 
           <Card border="info" style={{ width: "fit-content"}}>
             <Card.Header>Current Postings
             <Button variant="outline-info" name="showPosting" onClick={handleShow}>Edit</Button>
@@ -78,6 +84,8 @@ const CurrentPosting = (props) => {
                 <span>{!!post[0].peds_exp  && `${post[0].peds_years} years of Peds exp`}</span>
                 <span>{!!post[0].epilepsy_exp  && `${post[0].epilepsy_years} of exp with epileptic patients`}</span>
                 <span>{!!post[0].lift_res  && `${post[0].lift_res_type} lift restrictions`}</span>
+                <span>{!!post[0].smoke  && `I ${post[0].smoke}`}</span>
+                <span>{!!post[0].pets  && `I have a  ${post[0].type_pet}`}</span>
               </Card.Text>               
             </Card.Body>
 
@@ -120,7 +128,7 @@ const CurrentPosting = (props) => {
                       <Modal.Title>Add Availability</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                      <AddNew props={props} posting={post} days={day} shifts={shift}handleClose={handleClose}/>
+                      <AddNew props={props} posting={posting} days={day} shifts={shift}handleClose={handleClose}/>
                     </Modal.Body>
                     <Modal.Footer>
                       

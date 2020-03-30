@@ -54,7 +54,7 @@ const PatientRegister = (props) => {
             // const pt_id =response.data[0].id
               axiosWithAuth()
             //   const pt_id =response.data[0].id
-              .post('/api/needs', {needs, 'pt_id': response.data[0].id})
+              .post('/api/needs', {needs, 'pt_id': response.data.id})
               .then(response => {
                   setNeeds(response.data)
                   props.history.push('/dashboard')
